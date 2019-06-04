@@ -1,0 +1,1 @@
+export const ADD_SESSION_TOKEN = "ADD_SESSION_TOKEN";
