@@ -3,14 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cookieparser": "^0.1.0",
+    "express": "^4.17.1",
     "formik": "^1.5.7",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "react-scripts": "3.0.1",
-    "redux": "^4.0.1"
+    "redux": "^4.0.1",
+    "typescript": "*"
   },
   "scripts": {
+    "server": "nodemon --experimental-modules ./backend/server.mjs",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -30,5 +36,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "http://localhost:4000/"
 }

@@ -1,0 +1,12 @@
+.login-form {
+  width: 30%;
+  margin: 15% auto;
+  text-align: center;
+}
+.login-form-field {
+  text-align: center;
+}
+.login-form label {
+  font-size: 2rem;
+  font-weight: 400;
+}
