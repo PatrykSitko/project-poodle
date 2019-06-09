@@ -78,4 +78,6 @@
   border: 3px solid grey;
   border-radius: 50%;
   border-top-left-radius: 0px;
+  border-bottom-left-radius: 140px;
+  border-bottom-right-radius: 140px;
 }
