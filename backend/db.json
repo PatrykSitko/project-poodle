@@ -1,0 +1,140 @@
+[
+  {
+    "userName": "HildagardeG",
+    "password": "",
+    "token": "test-token",
+    "url": "student/HildagardeG",
+    "firstName": "Hildagarde",
+    "lastName": "Gladi",
+    "nationalNumber": 200528475036,
+    "imageURL": "http://www.rnbwig.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/h/i/hilda_tt612__1.jpg",
+    "grades": [
+      {
+        "date": null,
+        "gradeValue": 8,
+        "feedback": "Feedback for student about: Test exam 9",
+        "examTitle": "Test exam 9",
+        "examMaxGrade": 120,
+        "examWeight": 15
+      },
+      {
+        "date": null,
+        "gradeValue": 14,
+        "feedback": "Feedback for student about: Test exam 4",
+        "examTitle": "Test exam 4",
+        "examMaxGrade": 50,
+        "examWeight": 6
+      },
+      {
+        "date": null,
+        "gradeValue": 2,
+        "feedback": "Feedback for student about: Test exam 62",
+        "examTitle": "Test exam 62",
+        "examMaxGrade": 60,
+        "examWeight": 13
+      },
+      {
+        "date": null,
+        "gradeValue": 83,
+        "feedback": "Feedback for student about: Test exam 97",
+        "examTitle": "Test exam 97",
+        "examMaxGrade": 90,
+        "examWeight": 14
+      }
+    ],
+    "percentage": 0.336231884057971
+  },
+  {
+    "userName": "patryk",
+    "password": "",
+    "token": "test-token",
+    "url": "student/patryk",
+    "firstName": "Patryk",
+    "lastName": "Sitko",
+    "nationalNumber": 200528475036,
+    "imageURL": "https://avatars1.githubusercontent.com/u/22419442?s=400&v=4",
+    "grades": [
+      {
+        "date": null,
+        "gradeValue": 8,
+        "feedback": "Feedback for student about: Test exam 9",
+        "examTitle": "Test exam 9",
+        "examMaxGrade": 120,
+        "examWeight": 15
+      },
+      {
+        "date": null,
+        "gradeValue": 14,
+        "feedback": "Feedback for student about: Test exam 4",
+        "examTitle": "Test exam 4",
+        "examMaxGrade": 50,
+        "examWeight": 6
+      },
+      {
+        "date": null,
+        "gradeValue": 2,
+        "feedback": "Feedback for student about: Test exam 62",
+        "examTitle": "Test exam 62",
+        "examMaxGrade": 60,
+        "examWeight": 13
+      },
+      {
+        "date": null,
+        "gradeValue": 83,
+        "feedback": "Feedback for student about: Test exam 97",
+        "examTitle": "Test exam 97",
+        "examMaxGrade": 90,
+        "examWeight": 14
+      },
+      {
+        "date": null,
+        "gradeValue": 14,
+        "feedback": "Feedback for student about: Test exam 4",
+        "examTitle": "Test exam 4",
+        "examMaxGrade": 50,
+        "examWeight": 6
+      },
+      {
+        "date": null,
+        "gradeValue": 2,
+        "feedback": "Feedback for student about: Test exam 62",
+        "examTitle": "Test exam 62",
+        "examMaxGrade": 60,
+        "examWeight": 13
+      },
+      {
+        "date": null,
+        "gradeValue": 83,
+        "feedback": "Feedback for student about: Test exam 97",
+        "examTitle": "Test exam 97",
+        "examMaxGrade": 90,
+        "examWeight": 14
+      },
+      {
+        "date": null,
+        "gradeValue": 14,
+        "feedback": "Feedback for student about: Test exam 4",
+        "examTitle": "Test exam 4",
+        "examMaxGrade": 50,
+        "examWeight": 6
+      },
+      {
+        "date": null,
+        "gradeValue": 2,
+        "feedback": "Feedback for student about: Test exam 62",
+        "examTitle": "Test exam 62",
+        "examMaxGrade": 60,
+        "examWeight": 13
+      },
+      {
+        "date": null,
+        "gradeValue": 83,
+        "feedback": "Feedback for student about: Test exam 97",
+        "examTitle": "Test exam 97",
+        "examMaxGrade": 90,
+        "examWeight": 14
+      }
+    ],
+    "percentage": 0.336231884057971
+  }
+]
