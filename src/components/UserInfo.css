@@ -1,0 +1,81 @@
+#user-info-panel {
+  width: calc(100% - 3px);
+}
+#user-info {
+  float: left;
+  width: calc(100% - 400px);
+}
+#user-info-left {
+  float: left;
+  width: 550px;
+}
+#user-info-right {
+  float: left;
+  width: calc(100% - 551px);
+  border-right: 1px solid gray;
+}
+#user-info p {
+  font-size: 50px;
+  padding: auto 0;
+  margin: 0 auto;
+  height: 65px;
+  border-right: 0px;
+  width: 100%;
+}
+
+#firstname {
+  background-color: lightgray;
+  border: 3px solid gray;
+  border-bottom: 1px dotted black;
+  border-left: 0px;
+}
+#lastname {
+  float: right;
+  background-color: white;
+  border: 3px solid gray;
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+  border-left: 0px;
+}
+#national-number {
+  float: right;
+  background-color: lightgray;
+  border: 3px solid gray;
+  border-top: 1px dotted black;
+  border-left: 0px;
+}
+
+#firstname-label {
+  background-color: lightgray;
+  border-top-left-radius: 100px;
+  border: 3px solid gray;
+  border-bottom: 1px dotted black;
+  text-indent: 316px;
+}
+#lastname-label {
+  background-color: white;
+  border: 3px solid gray;
+  border-top: 1px dotted black;
+  border-bottom: 1px dotted black;
+  text-indent: 165px;
+}
+#national-number-label {
+  background-color: lightgray;
+  border-bottom-left-radius: 100px;
+  border: 3px solid gray;
+  border-top: 1px dotted black;
+  text-indent: 50px;
+}
+#user-image-frame {
+  height: 400px;
+  width: 400px;
+  float: right;
+  padding-bottom: 3px;
+}
+#user-image {
+  width: calc(100% - 3px);
+  height: calc(100% - 3px);
+  border: 3px solid grey;
+  border-radius: 50%;
+  border-top-left-radius: 0px;
+}

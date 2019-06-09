@@ -1,0 +1,11 @@
+.popup-window {
+  position: absolute;
+  background-color: yellow;
+}
+.popup-content {
+  height: 90%;
+}
+.popup-close-button {
+  height: 10%;
+  width: 100%;
+}

@@ -1,0 +1,37 @@
+.description,
+.feedback,
+.grade {
+  background-color: lightgray;
+  flex-wrap: nowrap;
+  font-size: 1.5em;
+}
+.description {
+  font-size: 2em;
+}
+.grades-date,
+.exam-date {
+  white-space: pre;
+  border-right: 1px solid gray;
+}
+.grades-title,
+.exam-title {
+  min-width: calc(100% - 75% - 1px);
+  width: calc(100% - 15% - 1px);
+  max-width: calc(100% - 1px);
+  border-right: 1px solid gray;
+}
+.grades-score,
+.exam-score {
+  border-right: 1px solid gray;
+}
+.grades-date,
+.grades-title,
+.grades-score,
+.grades-weight {
+  border-bottom: 1px solid gray;
+}
+
+.popup-button {
+  width: 100%;
+  height: 100%;
+}

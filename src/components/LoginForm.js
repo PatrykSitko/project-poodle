@@ -1,41 +1,55 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { setSessionToken } from "../redux/actions";
+import { setToken, setUrl } from "../redux/actions";
 import { connect } from "react-redux";
 import "./LoginForm.css";
 
 const mapDispatchToProps = dispatch => {
   return {
-    setSessionToken: token => dispatch(setSessionToken(token))
+    setToken: token => dispatch(setToken(token)),
+    setUrl: url => dispatch(setUrl(url))
   };
 };
 
 function LoginForm(props) {
   return (
     <Formik
-      initialValues={{ login: "", password: "" }}
+      initialValues={{ userName: "", password: "" }}
       onSubmit={handleSubmit.bind(this, props)}
+      validate={validateLogin}
       render={form}
     />
   );
 }
+
+function validateLogin(values) {
+  const { userName } = values;
+  const errors = {};
+  if (userName === "test") {
+    errors.userName = "error error error...";
+  }
+  return errors;
+}
 async function handleSubmit(
-  { setSessionToken },
+  { setToken, setUrl },
   credentials,
   { setSubmitting }
 ) {
+  console.log(arguments);
   setSubmitting(true);
   const response = await fetch("/login", {
     method: "POST",
+    mode: "cors",
     headers: {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(credentials)
   });
+  console.log(response.status);
   switch (response.status) {
     case 203:
       alert(
-        `${response.status}, Sorry dear ${credentials.login} ${
+        `${response.status}, Sorry dear ${credentials.userName} ${
           response.statusText
         }`
       );
@@ -44,25 +58,31 @@ async function handleSubmit(
       alert("access denied!");
       break;
     case 200:
-      const { sessionToken } = await response.json();
-      setSessionToken(sessionToken);
+      const { token, url } = await response.json();
+      console.log(token, typeof url);
+      setToken(token);
+      setUrl(url);
+      break;
+    case 500:
+      alert("500: server error!");
       break;
   }
-  console.log(document.cookie);
   setSubmitting(false);
 }
 function form(props) {
   return (
     <Form className="pure-form login-form">
       <fieldset className="pure-group login-form-fieldset">
-        <label htmlFor="login">Gebruikersnaam</label>
+        <label htmlFor="userName">Gebruikersnaam</label>
         <Field
           className="pure-input-1 login-form-field"
           type="text"
-          name="login"
+          name="userName"
           placeholder="gebruikersnaam"
         />
-        {/* <ErrorMessage name='login'/> */}
+        <p>
+          <ErrorMessage name="userName" />
+        </p>
         <label htmlFor="password">wachtwoord</label>
         <Field
           className="pure-input-1 login-form-field"

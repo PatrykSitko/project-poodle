@@ -1,37 +1,24 @@
 import React from "react";
-import store from "./redux/store";
-import { Provider } from "react-redux";
+import { connect } from "react-redux";
+import "./App.css";
 import LoginForm from "./components/LoginForm";
+import ViewLoader from "./components/ViewLoader";
 
-export default class App extends React.Component {
-  state = {
-    isLoggedIn: false
-  };
-  render() {
-    return (
-      <Provider store={store}>
-        {this.state.isLoggedIn ? <p>welcome back</p> : <LoginForm />}
-      </Provider>
-    );
-  }
-  componentWillMount = () => {
-    console.log(store.getState());
-    const interval = setInterval(i => {
-      if (
-        (document.cookie.includes("test-token") ||
-          (store.getState().sessionToken &&
-            store.getState().sessionToken.includes("test-token"))) &&
-        !this.state.isLoggedIn
-      ) {
-        this.setState({ isLoggedIn: true });
-      } else if (
-        store.getState().sessionToken &&
-        !store.getState().sessionToken.includes("test-token") &&
-        this.state.isLoggedIn
-      ) {
-        this.setState({ isLoggedIn: false });
-      }
-    }, 100);
-    this.setState({ interval });
-  };
+function App({ isConnected }) {
+  return (isConnected() && <ViewLoader />) || <LoginForm />;
 }
+// @ts-ignore
+export default connect(({ token, url }) => {
+  return { isConnected: () => token && url };
+})(App);
+
+// async function getData(url, token) {
+//   const res = await fetch(url, {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json"
+//     },
+//     body: JSON.stringify({ token: token })
+//   });
+//   return await res.json();
+// }

@@ -2,7 +2,9 @@ import { createStore } from "redux";
 import { rootReducer } from "./reducers";
 
 const initialState = {
-  sessionToken: undefined
+  token: undefined,
+  url: undefined,
+  userData: undefined
 };
 const store = createStore(
   rootReducer,
