@@ -39,9 +39,9 @@ async function handleSubmit(
   setSubmitting(true);
   const response = await fetch("/login", {
     method: "POST",
-    mode: "cors",
     headers: {
-      "Content-Type": "application/json"
+      // "access-control-allow-origin": "*",
+      "Content-type": "application/json; charset=UTF-8"
     },
     body: JSON.stringify(credentials)
   });

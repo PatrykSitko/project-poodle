@@ -5,7 +5,7 @@ export default function PopupButton({ content, children }) {
   const [clicked, setClicked] = useState(false);
   return [
     clicked && (
-      <div className="popup-window">
+      <div className="popup-window" key="popup-window">
         <div className="popup-content">{content}</div>
         <button
           className="popup-close-button"
@@ -15,7 +15,11 @@ export default function PopupButton({ content, children }) {
         </button>
       </div>
     ),
-    <button className="popup-button" onClick={event => setClicked(!clicked)}>
+    <button
+      className="popup-button"
+      key="popup-button"
+      onClick={event => setClicked(!clicked)}
+    >
       {children}
     </button>
   ];

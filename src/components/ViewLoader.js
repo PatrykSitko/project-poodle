@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import { setToken, setUrl, setUserData } from "../redux/actions";
 import { connect } from "react-redux";
 import Student from "./views/Student";
 
-function mapStateToProps({ token, url }) {
-  return { token, url };
+function mapStateToProps({ token, url, userData }) {
+  return { token, url, userData };
 }
 function mapDispatchToProps(dispatch) {
   return {
@@ -13,47 +13,39 @@ function mapDispatchToProps(dispatch) {
     setUserData: data => dispatch(setUserData(data))
   };
 }
-export function ViewLoader({ token, url, setToken, setUrl, setUserData }) {
-  const [status, setStatus] = useState(undefined);
-  useEffect(
-    function(setUserData, setStatus, token, url) {
-      (async (setUserData, setStatus, token, url) => {
-        console.log(setUserData, setStatus, token, url);
-        const data = await fetch(url, {
-          method: "POST",
-          mode: "cors",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(token)
-        });
-        setStatus(data.status);
-        if (data.status === 200) setUserData(data.json());
-      })(setUserData, setStatus, token, url);
-    }.bind(this, setUserData, setStatus, token, url),
-    []
-  );
-  switch (status) {
-    case undefined:
+export class ViewLoader extends Component {
+  componentDidMount() {
+    const { token, url, setUserData } = this.props;
+    fetch(`/${url}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ token })
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setUserData(data);
+      });
+  }
+  render() {
+    const { userData, url, setToken, setUrl, setUserData } = this.props;
+    if (!userData) {
       return <p>Loading...</p>;
-    case 200:
-      if (url.includes("/admin/")) {
-        return null;
-      } else if (url.includes("/teacher/")) {
-        return null;
-      } else if (url.includes("/student/")) {
-        return <Student />;
-      } else {
-        setToken(undefined);
-        setUrl(undefined);
-        setUserData(undefined);
-        return false;
-      }
-    default:
+    }
+    if (url.includes("admin/")) {
+      return null;
+    } else if (url.includes("teacher/")) {
+      return null;
+    } else if (url.includes("student/")) {
+      return <Student />;
+    } else {
       setToken(undefined);
       setUrl(undefined);
       setUserData(undefined);
       return false;
+    }
   }
 }
 

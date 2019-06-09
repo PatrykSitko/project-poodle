@@ -17,19 +17,24 @@ export default function Grade({
   style
 }) {
   return [
-    <tr className="description" style={style}>
+    <tr key={"description" + examTitle} className="description" style={style}>
       <td className="grades-date">Datum</td>
       <td className="grades-title">Titel</td>
       <td className="grades-score">Score</td>
       <td className="grades-weight">Impact</td>
     </tr>,
-    <tr id={examTitle} className="grade" style={style}>
+    <tr
+      id={examTitle}
+      key={"grade" + examTitle}
+      className="grade"
+      style={style}
+    >
       <td className="exam-date">{date}</td>
       <td className="exam-title">{examTitle}</td>
       <td className="exam-score">{gradeValue + "/" + examMaxGrade}</td>
       <td className="exam-weight">{examWeight}</td>
     </tr>,
-    <tr className="feedback" style={style}>
+    <tr key={"feedback" + examTitle} className="feedback" style={style}>
       <td className="exam-feedback" colSpan={4}>
         <PopupButton content={feedback}>Click to read feedback</PopupButton>
       </td>

@@ -23,13 +23,13 @@
   width: 100%;
 }
 
-#firstname {
+#first-name {
   background-color: lightgray;
   border: 3px solid gray;
   border-bottom: 1px dotted black;
   border-left: 0px;
 }
-#lastname {
+#last-name {
   float: right;
   background-color: white;
   border: 3px solid gray;
@@ -45,14 +45,14 @@
   border-left: 0px;
 }
 
-#firstname-label {
+#first-name-label {
   background-color: lightgray;
   border-top-left-radius: 100px;
   border: 3px solid gray;
   border-bottom: 1px dotted black;
   text-indent: 316px;
 }
-#lastname-label {
+#last-name-label {
   background-color: white;
   border: 3px solid gray;
   border-top: 1px dotted black;

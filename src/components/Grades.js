@@ -3,6 +3,10 @@ import { connect } from "react-redux";
 import Grade from "./Grade";
 import "./Grades.css";
 
+function mapStateToProps({ userData: { grades, percentage } }) {
+  return { display: grades, percentage };
+}
+
 export class Grades extends Component {
   state = { height: window.innerHeight - 209 };
   componentWillMount = () => {
@@ -19,15 +23,17 @@ export class Grades extends Component {
         <h1>Resultaten</h1>
         <div id="table-wrapper">
           <table>
-            {grades.map((grade, index) => (
-              // @ts-ignore
-              <Grade
-                {...grade}
-                style={{
-                  backgroundColor: index % 2 === 0 ? "white" : "lightgray"
-                }}
-              />
-            ))}
+            <tbody>
+              {grades.map((grade, index) => (
+                // @ts-ignore
+                <Grade key={index}
+                  {...grade}
+                  style={{
+                    backgroundColor: index % 2 === 0 ? "white" : "lightgray"
+                  }}
+                />
+              ))}
+            </tbody>
           </table>
         </div>
         <h2>Percentage: {percentage}%</h2>
@@ -36,6 +42,4 @@ export class Grades extends Component {
   }
 }
 
-export default connect(({ userData: { grades, percentage } }) => {
-  return { grades, percentage };
-})(Grades);
+export default connect(mapStateToProps)(Grades);

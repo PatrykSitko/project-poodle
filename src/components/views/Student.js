@@ -3,5 +3,5 @@ import Grades from "../Grades";
 import UserInfo from "../UserInfo";
 
 export default function Student() {
-  return [<UserInfo />, <Grades />];
+  return [<UserInfo key="UserInfo" />, <Grades key="Grades" />];
 }
