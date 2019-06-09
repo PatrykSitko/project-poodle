@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { setToken, setUrl, setUserData } from "../redux/actions";
 import { connect } from "react-redux";
 import Student from "./views/Student";
+import loading from "../images/loading.gif";
 
 function mapStateToProps({ token, url, userData }) {
   return { token, url, userData };
@@ -32,7 +33,20 @@ export class ViewLoader extends Component {
   render() {
     const { userData, url, setToken, setUrl, setUserData } = this.props;
     if (!userData) {
-      return <p>Loading...</p>;
+      return (
+        <img
+          src={loading}
+          alt="loading..."
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            objectFit: "contain"
+          }}
+        />
+      );
     }
     if (url.includes("admin/")) {
       return null;

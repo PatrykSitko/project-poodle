@@ -1,0 +1,9 @@
+#feedback-container {
+  float: inherit;
+  background-color: white;
+  width: calc(100% - 26px);
+  height: calc(100% - 200px);
+  margin: 10px;
+  border: 3px solid gray;
+  border-radius: 10px;
+}

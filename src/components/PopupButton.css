@@ -1,11 +1,49 @@
 .popup-window {
   position: absolute;
-  background-color: yellow;
+  width: calc(100% - 462px);
+  margin-left: -5px;
+  margin-right: 400px;
+  background-color: lightgray;
+  flex-wrap: nowrap;
+  border: 3px solid gray;
+  margin-right: -2px;
+  margin-top: -4px;
+  text-align: center;
+  border-bottom-left-radius: 75px;
+  border-bottom-right-radius: 75px;
+  top: 205px;
+}
+.popup-content .grade-date,
+.popup-content .exam-date {
+  border-left: 0px;
+  margin-left: 0px;
+}
+
+.popup-content .grade-weight,
+.popup-content .exam-weight {
+  border-right: 0px;
+  margin-right: 0px;
+}
+h1 {
+  font-size: 30px;
 }
 .popup-content {
-  height: 90%;
-}
-.popup-close-button {
-  height: 10%;
   width: 100%;
+  height: calc(100% - 57px);
+  overflow-y: auto;
+}
+.popup-content table {
+  width: 100%;
+  border-bottom: 1px solid gray;
+}
+/* .popup-button {
+  visibility: hidden;
+} */
+.popup-close-button {
+  cursor: pointer;
+}
+
+.grade-date,
+.exam-date {
+  border-left: 0px;
 }

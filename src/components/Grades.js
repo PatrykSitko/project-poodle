@@ -10,11 +10,11 @@ function mapStateToProps({ userData: { grades, percentage } }) {
 export class Grades extends Component {
   state = { height: window.innerHeight - 209 };
   componentWillMount = () => {
-    window.onresize = event => {
+    window.addEventListener("resize", event => {
       if (this.state.height !== window.innerHeight - 209) {
         this.setState({ height: window.innerHeight - 209 });
       }
-    };
+    });
   };
   render() {
     const { display: grades, percentage } = this.props;
@@ -26,7 +26,8 @@ export class Grades extends Component {
             <tbody>
               {grades.map((grade, index) => (
                 // @ts-ignore
-                <Grade key={index}
+                <Grade
+                  key={index}
                   {...grade}
                   style={{
                     backgroundColor: index % 2 === 0 ? "white" : "lightgray"
