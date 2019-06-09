@@ -29,7 +29,7 @@ h1 {
 }
 .popup-content {
   width: 100%;
-  height: calc(100% - 57px);
+  height: calc(100% - 62px);
   overflow-y: auto;
 }
 .popup-content table {
@@ -46,4 +46,16 @@ h1 {
 .grade-date,
 .exam-date {
   border-left: 0px;
+}
+h3 {
+  border-top: 3px solid gray;
+  padding: 15px 0;
+  margin: auto;
+  border-bottom-left-radius: 75px;
+  border-bottom-right-radius: 75px;
+}
+h3:hover {
+  border-top: 3px solid white;
+  background-color: gray;
+  color: white;
 }

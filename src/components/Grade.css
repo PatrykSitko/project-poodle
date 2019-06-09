@@ -47,8 +47,16 @@
   padding: 5px 0;
 }
 .exam-feedback-button {
-  border-top: 1px solid gray;
-  border-bottom: 5px ridge gray;
+  border-top: 3px solid gray;
+  border-bottom: 3px ridge gray;
   border-left: 2px ridge gray;
   border-right: 2px ridge gray;
+}
+button:hover {
+  background-color: gray;
+  color: white;
+}
+.exam-feedback-button:hover {
+  border-top: 3px solid lightgray;
+  border-bottom: 3px ridge lightgray;
 }

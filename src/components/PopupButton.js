@@ -21,12 +21,12 @@ export default function PopupButton({ content, children }) {
     clicked && (
       <div className="popup-window" key="popup-window" style={{ height }}>
         <div className="popup-content">{content}</div>
-        <h2
+        <h3
           className="popup-close-button"
           onClick={event => setClicked(!clicked)}
         >
           Close
-        </h2>
+        </h3>
       </div>
     ),
     <button
