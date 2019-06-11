@@ -1,4 +1,5 @@
 import { createStore } from "redux";
+import { bindEventListeners } from "./eventListeners";
 import { rootReducer } from "./reducers";
 
 const initialState = {
@@ -8,6 +9,7 @@ const initialState = {
   width: window.innerWidth,
   height: window.innerHeight
 };
+
 const store = createStore(
   rootReducer,
   // @ts-ignore
@@ -15,5 +17,7 @@ const store = createStore(
   // @ts-ignore
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
+
+bindEventListeners(store);
 
 export default store;
