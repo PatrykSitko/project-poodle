@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { setToken, setUrl, setData } from "../redux/actions";
 import { connect } from "react-redux";
 import Student from "./views/Student";
@@ -14,10 +14,9 @@ function mapDispatchToProps(dispatch) {
     setData: data => dispatch(setData(data))
   };
 }
-export class ViewLoader extends Component {
-  componentDidMount() {
-    const { token, url, setData } = this.props;
-    fetch(`/${url}`, {
+export function ViewLoader({ token, data, url, setToken, setUrl, setData }) {
+  useEffect(() => {
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -28,24 +27,21 @@ export class ViewLoader extends Component {
       .then(data => {
         setData(data);
       });
+  }, [url, token, setData]);
+  if (!data) {
+    return <Loading />;
   }
-  render() {
-    const { data, url, setToken, setUrl, setData } = this.props;
-    if (!data) {
-      return <Loading />;
-    }
-    if (url.includes("admin/")) {
-      return null;
-    } else if (url.includes("teacher/")) {
-      return null;
-    } else if (url.includes("student/")) {
-      return <Student />;
-    } else {
-      setToken(undefined);
-      setUrl(undefined);
-      setData(undefined);
-      return false;
-    }
+  if (url.includes("student/")) {
+    return <Student />;
+  } else if (url.includes("teacher/")) {
+    return null;
+  } else if (url.includes("admin/")) {
+    return null;
+  } else {
+    setToken(undefined);
+    setUrl(undefined);
+    setData(undefined);
+    return false;
   }
 }
 
