@@ -35,9 +35,9 @@ export class Grades extends Component {
                 <Grade
                   key={index}
                   {...grade}
-                  style={{
-                    backgroundColor: index % 2 === 0 ? "white" : "lightgray"
-                  }}
+                  className={
+                    index % 2 === 0 ? "table-row-even" : "table-row-odd"
+                  }
                   popupStyle={popupStyle}
                 />
               ))}

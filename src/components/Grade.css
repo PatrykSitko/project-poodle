@@ -5,6 +5,15 @@
   flex-wrap: nowrap;
   font-size: 1.5em;
 }
+.table-row-odd {
+  background-color: white;
+}
+.table-row-even {
+  background-color: lightgray;
+}
+.popup-table-row {
+  background-color: lightgray;
+}
 .description {
   font-size: 2em;
 }

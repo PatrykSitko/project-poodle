@@ -5,10 +5,10 @@ import Feedback from "./Feedback";
 import "./Grade.css";
 
 export default function Grade(props) {
-  const { examTitle, feedback, style, popupStyle } = props;
+  const { examTitle, feedback, popupStyle, className } = props;
   return [
     <GradeMain key={"GradeMain" + examTitle} {...props} />,
-    <tr key={"feedback" + examTitle} className="feedback" style={style}>
+    <tr key={"feedback" + examTitle} className={"feedback " + className}>
       <td className="exam-feedback-button" colSpan={4}>
         <PopupButton
           style={popupStyle}
@@ -17,9 +17,7 @@ export default function Grade(props) {
             <h1 key="title">Feedback</h1>,
             <table key="PopupButtonTable">
               <tbody>
-                <GradeMain
-                  {...{ ...props, style: { backgroundColor: "lightgray" } }}
-                />
+                <GradeMain {...{ ...props, className: "popup-table-row" }} />
               </tbody>
             </table>,
             <Feedback
@@ -43,10 +41,10 @@ function GradeMain({
   examTitle,
   examWeight,
   examMaxGrade,
-  style
+  className
 }) {
   return [
-    <tr key={"description" + examTitle} className="description" style={style}>
+    <tr key={"description" + examTitle} className={"description " + className}>
       <td className="grade-date">Datum</td>
       <td className="grade-title">Titel</td>
       <td className="grade-score">Score</td>
@@ -55,8 +53,7 @@ function GradeMain({
     <tr
       id={examTitle}
       key={"grade" + examTitle}
-      className="grade"
-      style={style}
+      className={"grade " + className}
     >
       <td className="exam-date">{date}</td>
       <td className="exam-title">{examTitle}</td>
