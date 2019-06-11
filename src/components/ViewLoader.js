@@ -32,7 +32,7 @@ export function ViewLoader({ token, data, url, setToken, setUrl, setData }) {
     return <Loading />;
   }
   if (url.includes("student/")) {
-    return <Student />;
+    return Student;
   } else if (url.includes("teacher/")) {
     return null;
   } else if (url.includes("admin/")) {
