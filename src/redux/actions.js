@@ -12,9 +12,15 @@ export function setData(data) {
     payload: { data }
   };
 }
-export function setDimension(width, height) {
+export function setWidth(width) {
   return {
-    type: actionType.SET_DIMENSION,
-    payload: { width, height }
+    type: actionType.SET_WIDTH,
+    payload: { width }
+  };
+}
+export function setHeight(height) {
+  return {
+    type: actionType.SET_HEIGHT,
+    payload: { height }
   };
 }

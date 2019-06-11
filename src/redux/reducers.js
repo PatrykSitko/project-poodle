@@ -1,4 +1,5 @@
 import * as actionType from "./actionTypes";
+
 export function rootReducer(state, action) {
   switch (action.type) {
     default:
@@ -9,10 +10,14 @@ export function rootReducer(state, action) {
       return { ...state, url: action.payload.url };
     case actionType.SET_DATA:
       return { ...state, data: action.payload.data };
-    case actionType.SET_DIMENSION:
+    case actionType.SET_WIDTH:
       return {
         ...state,
-        width: action.payload.width,
+        width: action.payload.width
+      };
+    case actionType.SET_HEIGHT:
+      return {
+        ...state,
         height: action.payload.height
       };
   }
