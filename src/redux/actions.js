@@ -24,3 +24,7 @@ export function setHeight(height) {
     payload: { height }
   };
 }
+
+export function setMousedown(boolean) {
+  return { type: actionType.SET_MOUSEDOWN, payload: { mousedown: boolean } };
+}

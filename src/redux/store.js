@@ -7,7 +7,8 @@ const initialState = {
   url: undefined,
   data: undefined,
   width: window.innerWidth,
-  height: window.innerHeight
+  height: window.innerHeight,
+  mousedown: false
 };
 
 const store = createStore(

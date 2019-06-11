@@ -20,5 +20,7 @@ export function rootReducer(state, action) {
         ...state,
         height: action.payload.height
       };
+    case actionType.SET_MOUSEDOWN:
+      return { ...state, mousedown: action.payload.mousedown };
   }
 }
