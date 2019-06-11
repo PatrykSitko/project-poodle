@@ -4,35 +4,28 @@ import { connect } from "react-redux";
 import Grade from "./Grade";
 import "./Grades.css";
 
-function mapStateToProps({ data: { grades, percentage } }) {
-  return { display: grades, percentage };
+function mapStateToProps({ data: { grades, percentage }, width, height }) {
+  return { display: grades, percentage, width, height };
 }
 
 export class Grades extends Component {
   state = {
-    height: this.height,
-    width: this.width
+    offset: {
+      height: 209,
+      width: 462
+    }
   };
   componentWillMount = () => {
-    window.addEventListener("resize", event => {
-      this.setState({
-        height: this.height,
-        width: this.width
-      });
-      setPopupStyle.bind(this)();
-    });
+    window.addEventListener("resize", setPopupStyle.bind(this));
   };
-  get width() {
-    return window.innerWidth - 462;
-  }
-  get height() {
-    return window.innerHeight - 209;
-  }
   render() {
-    const { display: grades, percentage } = this.props;
-    const { width, height, popupStyle } = this.state;
+    const { display: grades, percentage, width, height } = this.props;
+    const { offset, popupStyle } = this.state;
     return (
-      <div id="grades" style={{ height, width }}>
+      <div
+        id="grades"
+        style={{ width: width - offset.width, height: height - offset.height }}
+      >
         <h1>Resultaten</h1>
         <div id="table-wrapper">
           <table>
@@ -61,19 +54,21 @@ export class Grades extends Component {
   };
   componentWillUnmount = () => {
     this._isMounted = false;
+    window.removeEventListener("resize", setPopupStyle.bind(this));
   };
 }
-
 function setPopupStyle() {
   if (!this._isMounted) return;
   // @ts-ignore
   const boundingRect = ReactDOM.findDOMNode(this).getBoundingClientRect();
+  const { width, height } = this.props;
+  const { offset } = this.state;
   this.setState({
     popupStyle: {
       left: boundingRect.left,
       top: boundingRect.top,
-      width: this.state.width,
-      height: this.state.height
+      width: width - offset.width,
+      height: height - offset.height
     }
   });
 }

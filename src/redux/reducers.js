@@ -9,5 +9,11 @@ export function rootReducer(state, action) {
       return { ...state, url: action.payload.url };
     case actionType.SET_DATA:
       return { ...state, data: action.payload.data };
+    case actionType.SET_DIMENSION:
+      return {
+        ...state,
+        width: action.payload.width,
+        height: action.payload.height
+      };
   }
 }

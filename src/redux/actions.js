@@ -12,3 +12,9 @@ export function setData(data) {
     payload: { data }
   };
 }
+export function setDimension(width, height) {
+  return {
+    type: actionType.SET_DIMENSION,
+    payload: { width, height }
+  };
+}
