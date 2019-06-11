@@ -1,20 +1,17 @@
+//@ts-nocheck
 import React from "react";
 import PopupButton from "./PopupButton";
 import Feedback from "./Feedback";
 import "./Grade.css";
 
-// style={{
-//   border: "3px solid black",
-//   width: "1%",
-//   whiteSpace: "nowrap"
-// }}
 export default function Grade(props) {
-  const { examTitle, feedback, style } = props;
+  const { examTitle, feedback, style, popupStyle } = props;
   return [
     <GradeMain key={"GradeMain" + examTitle} {...props} />,
     <tr key={"feedback" + examTitle} className="feedback" style={style}>
       <td className="exam-feedback-button" colSpan={4}>
         <PopupButton
+          style={popupStyle}
           key={"PopupButton" + examTitle}
           content={[
             <h1 key="title">Feedback</h1>,

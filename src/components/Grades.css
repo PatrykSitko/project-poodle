@@ -1,8 +1,7 @@
 #grades {
   display: inline-block;
-  width: calc(100% - 462px);
+  /* width: calc(100% - 462px); */
   margin-left: 55px;
-  margin-right: 400px;
   background-color: lightgray;
   flex-wrap: nowrap;
   border: 3px solid gray;

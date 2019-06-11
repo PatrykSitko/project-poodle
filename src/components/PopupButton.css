@@ -1,17 +1,11 @@
 .popup-window {
   position: absolute;
-  width: calc(100% - 462px);
-  margin-left: -5px;
-  margin-right: 400px;
   background-color: lightgray;
   flex-wrap: nowrap;
   border: 3px solid gray;
-  margin-right: -2px;
-  margin-top: -4px;
   text-align: center;
   border-bottom-left-radius: 75px;
   border-bottom-right-radius: 75px;
-  top: 205px;
 }
 .popup-content .grade-date,
 .popup-content .exam-date {
@@ -32,6 +26,7 @@ h1 {
   height: calc(100% - 63px);
 }
 .popup-content table {
+  font-size: 20px;
   width: 100%;
   border-bottom: 1px solid gray;
 }

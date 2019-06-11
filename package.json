@@ -17,7 +17,9 @@
   },
   "scripts": {
     "backend": "nodemon --experimental-modules ./backend/server.mjs",
+    "server": "nodemon --experimental-modules ./backend/server.mjs",
     "frontend": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
