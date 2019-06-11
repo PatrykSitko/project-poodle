@@ -11,7 +11,7 @@ function mapStateToProps({ data: { grades, percentage }, width, height }) {
 export class Grades extends Component {
   state = {
     offset: {
-      height: 209,
+      height: 207,
       width: 462
     }
   };
