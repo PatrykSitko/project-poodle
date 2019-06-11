@@ -35,7 +35,6 @@ async function handleSubmit(
   credentials,
   { setSubmitting }
 ) {
-  console.log(arguments);
   setSubmitting(true);
   const response = await fetch("/login", {
     method: "POST",
@@ -45,7 +44,6 @@ async function handleSubmit(
     },
     body: JSON.stringify(credentials)
   });
-  console.log(response.status);
   switch (response.status) {
     case 203:
       alert(
@@ -59,7 +57,6 @@ async function handleSubmit(
       break;
     case 200:
       const { token, url } = await response.json();
-      console.log(token, typeof url);
       setToken(token);
       setUrl(url);
       break;
