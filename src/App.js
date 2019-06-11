@@ -1,7 +1,7 @@
 import React from "react";
 import ShowLoginScreen from "./components/LoginForm";
 import LoadView from "./components/ViewLoader";
-import { connect as App } from "react-redux";
+import { connect } from "react-redux";
 import "./App.css";
 
 function props({ token, url }) {
@@ -10,7 +10,6 @@ function props({ token, url }) {
   };
 }
 
-export default App(props)(
-  // @ts-ignore
-  user => user.isConnectedThenLoadView() || <ShowLoginScreen />
-);
+const App = user => user.isConnectedThenLoadView() || <ShowLoginScreen />;
+
+export default connect(props)(App);
