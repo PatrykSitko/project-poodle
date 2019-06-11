@@ -16,8 +16,8 @@
     "typescript": "*"
   },
   "scripts": {
-    "server": "nodemon --experimental-modules ./backend/server.mjs",
-    "start": "react-scripts start",
+    "backend": "nodemon --experimental-modules ./backend/server.mjs",
+    "frontend": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

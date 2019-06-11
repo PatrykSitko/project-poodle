@@ -4,7 +4,7 @@ import { rootReducer } from "./reducers";
 const initialState = {
   token: undefined,
   url: undefined,
-  userData: undefined
+  data: undefined
 };
 const store = createStore(
   rootReducer,

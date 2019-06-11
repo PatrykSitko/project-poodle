@@ -6,9 +6,9 @@ export function setToken(token) {
 export function setUrl(url) {
   return { type: actionType.SET_URL, payload: { url } };
 }
-export function setUserData(data) {
+export function setData(data) {
   return {
-    type: actionType.SET_USER_DATA,
-    payload: { userData: data }
+    type: actionType.SET_DATA,
+    payload: { data }
   };
 }

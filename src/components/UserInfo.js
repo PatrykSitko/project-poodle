@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import "./UserInfo.css";
 
 function mapStateToProps({
-  userData: { firstName, lastName, nationalNumber, imageURL }
+  data: { firstName, lastName, nationalNumber, imageURL }
 }) {
   return { firstName, lastName, nationalNumber, imageURL };
 }

@@ -1,0 +1,13 @@
+.logout-button {
+  background-color: red;
+  width: 49px;
+  height: 49px;
+  object-fit: contain;
+  border-radius: 50%;
+  border: 3px outset red;
+  position: absolute;
+  display: block;
+  top: 7px;
+  right: 7px;
+  z-index: 999;
+}

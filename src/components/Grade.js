@@ -11,18 +11,21 @@ import "./Grade.css";
 export default function Grade(props) {
   const { examTitle, feedback, style } = props;
   return [
-    <GradeMain {...props} />,
+    <GradeMain key={"GradeMain" + examTitle} {...props} />,
     <tr key={"feedback" + examTitle} className="feedback" style={style}>
       <td className="exam-feedback-button" colSpan={4}>
         <PopupButton
+          key={"PopupButton" + examTitle}
           content={[
-            <h1>Feedback</h1>,
-            <table>
-              <GradeMain
-                {...{ ...props, style: { backgroundColor: "lightgray" } }}
-              />
+            <h1 key="title">Feedback</h1>,
+            <table key="PopupButtonTable">
+              <tbody>
+                <GradeMain
+                  {...{ ...props, style: { backgroundColor: "lightgray" } }}
+                />
+              </tbody>
             </table>,
-            <Feedback>{feedback}</Feedback>
+            <Feedback key={"feedback" + examTitle}>{feedback}</Feedback>
           ]}
         >
           Click to read feedback

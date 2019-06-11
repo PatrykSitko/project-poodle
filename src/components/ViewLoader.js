@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import { setToken, setUrl, setUserData } from "../redux/actions";
+import { setToken, setUrl, setData } from "../redux/actions";
 import { connect } from "react-redux";
 import Student from "./views/Student";
-import loading from "../images/loading.gif";
+import Loading from "./LoadingScreen";
 
-function mapStateToProps({ token, url, userData }) {
-  return { token, url, userData };
+function mapStateToProps({ token, url, data }) {
+  return { token, url, data };
 }
 function mapDispatchToProps(dispatch) {
   return {
     setToken: token => dispatch(setToken(token)),
     setUrl: url => dispatch(setUrl(url)),
-    setUserData: data => dispatch(setUserData(data))
+    setData: data => dispatch(setData(data))
   };
 }
 export class ViewLoader extends Component {
   componentDidMount() {
-    const { token, url, setUserData } = this.props;
+    const { token, url, setData } = this.props;
     fetch(`/${url}`, {
       method: "POST",
       headers: {
@@ -26,27 +26,13 @@ export class ViewLoader extends Component {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setUserData(data);
+        setData(data);
       });
   }
   render() {
-    const { userData, url, setToken, setUrl, setUserData } = this.props;
-    if (!userData) {
-      return (
-        <img
-          src={loading}
-          alt="loading..."
-          style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            objectFit: "contain"
-          }}
-        />
-      );
+    const { data, url, setToken, setUrl, setData } = this.props;
+    if (!data) {
+      return <Loading />;
     }
     if (url.includes("admin/")) {
       return null;
@@ -57,7 +43,7 @@ export class ViewLoader extends Component {
     } else {
       setToken(undefined);
       setUrl(undefined);
-      setUserData(undefined);
+      setData(undefined);
       return false;
     }
   }

@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import Grade from "./Grade";
 import "./Grades.css";
 
-function mapStateToProps({ userData: { grades, percentage } }) {
+function mapStateToProps({ data: { grades, percentage } }) {
   return { display: grades, percentage };
 }
 

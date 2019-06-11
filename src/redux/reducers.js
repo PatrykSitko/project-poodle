@@ -7,7 +7,7 @@ export function rootReducer(state, action) {
       return { ...state, token: action.payload.token };
     case actionType.SET_URL:
       return { ...state, url: action.payload.url };
-    case actionType.SET_USER_DATA:
-      return { ...state, userData: action.payload.userData };
+    case actionType.SET_DATA:
+      return { ...state, data: action.payload.data };
   }
 }

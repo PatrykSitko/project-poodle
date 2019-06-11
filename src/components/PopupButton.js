@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./PopupButton.css";
-// componentWillMount = () => {
-//   window.onresize = event => {
-//     if (this.state.height !== window.innerHeight - 209) {
-//       this.setState({ height: window.innerHeight - 209 });
-//     }
-//   };
-// };
 export default function PopupButton({ content, children }) {
   const [clicked, setClicked] = useState(false);
   const [height, setHeight] = useState(window.innerHeight - 209);
