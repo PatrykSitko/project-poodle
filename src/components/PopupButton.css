@@ -6,6 +6,7 @@
   text-align: center;
   border-bottom-left-radius: 75px;
   border-bottom-right-radius: 75px;
+  overflow: hidden;
 }
 .popup-content .grade-date,
 .popup-content .exam-date {

@@ -10,18 +10,24 @@ function mapStateToProps({ data: { grades, percentage } }) {
 
 export class Grades extends Component {
   state = {
-    height: window.innerHeight - 209,
-    width: window.innerWidth - 462
+    height: this.height,
+    width: this.width
   };
   componentWillMount = () => {
     window.addEventListener("resize", event => {
       this.setState({
-        height: window.innerHeight - 209,
-        width: window.innerWidth - 462
+        height: this.height,
+        width: this.width
       });
       setPopupStyle.bind(this)();
     });
   };
+  get width() {
+    return window.innerWidth - 462;
+  }
+  get height() {
+    return window.innerHeight - 209;
+  }
   render() {
     const { display: grades, percentage } = this.props;
     const { width, height, popupStyle } = this.state;
@@ -50,11 +56,16 @@ export class Grades extends Component {
     );
   }
   componentDidMount = () => {
+    this._isMounted = true;
     setPopupStyle.bind(this)();
+  };
+  componentWillUnmount = () => {
+    this._isMounted = false;
   };
 }
 
 function setPopupStyle() {
+  if (!this._isMounted) return;
   // @ts-ignore
   const boundingRect = ReactDOM.findDOMNode(this).getBoundingClientRect();
   this.setState({

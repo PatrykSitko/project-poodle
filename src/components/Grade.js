@@ -22,7 +22,12 @@ export default function Grade(props) {
                 />
               </tbody>
             </table>,
-            <Feedback key={"feedback" + examTitle}>{feedback}</Feedback>
+            <Feedback
+              key={"feedback" + examTitle}
+              style={{ height: window.innerHeight - 453 }}
+            >
+              {feedback}
+            </Feedback>
           ]}
         >
           Click to read feedback

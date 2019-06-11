@@ -1,7 +1,6 @@
 #feedback-container {
   float: inherit;
   background-color: white;
-  width: calc(100% - 27px);
   margin: 10px;
   border: 3px solid gray;
   border-radius: 8px;
