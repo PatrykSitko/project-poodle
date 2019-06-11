@@ -1,43 +1,16 @@
-import React, { useEffect as redux } from "react";
-import { setDimension } from "./redux/actions";
-import { connect } from "react-redux";
-import "./App.css";
+import React from "react";
 import ShowLoginScreen from "./components/LoginForm";
 import LoadView from "./components/ViewLoader";
+import { connect as App } from "react-redux";
+import "./App.css";
 
-function mapStateToProps({ token, url }) {
+function props({ token, url }) {
   return {
     isConnectedThenLoadView: () => token && url && <LoadView />
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    setDimension: (width, height) => dispatch(setDimension(width, height))
-  };
-}
-function startTrackingDimensionOf({ setDimension }) {
-  const dimensionTracker = setDimension =>
-    setDimension(window.innerWidth, window.innerHeight);
-  return () => {
-    window.addEventListener(
-      "resize",
-      dimensionTracker.bind(this, setDimension)
-    );
-    return () =>
-      window.removeEventListener(
-        "resize",
-        dimensionTracker.bind(this, setDimension)
-      );
-  };
-}
-const Launcher = app => [
-  redux(startTrackingDimensionOf(app), []),
-  app.isConnectedThenLoadView() || <ShowLoginScreen />
-];
 
-const app = connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default App(props)(
+  // @ts-ignore
+  user => user.isConnectedThenLoadView() || <ShowLoginScreen />
 );
-// @ts-ignore
-export default app(Launcher);
