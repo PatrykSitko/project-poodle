@@ -46,7 +46,7 @@ h1 {
   border-bottom-left-radius: 75px;
   border-bottom-right-radius: 75px;
 }
-.popup-close-button {
+.popup-close-button:hover {
   border-top: 3px solid white;
   background-color: gray;
   color: white;
