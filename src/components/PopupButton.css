@@ -31,18 +31,13 @@ h1 {
   width: 100%;
   border-bottom: 1px solid gray;
 }
-/* .popup-button {
-  visibility: hidden;
-} */
+.popup-button-mousedown,
+.popup-close-button-mousedown {
+  background-color: yellow !important;
+  color: red !important;
+}
 .popup-close-button {
   cursor: pointer;
-}
-
-.grade-date,
-.exam-date {
-  border-left: 0px;
-}
-h3 {
   height: 23px;
   border-top: 3px solid gray;
   padding: 20px 0;
@@ -50,8 +45,13 @@ h3 {
   border-bottom-left-radius: 75px;
   border-bottom-right-radius: 75px;
 }
-h3:hover {
+.popup-close-button {
   border-top: 3px solid white;
   background-color: gray;
   color: white;
+}
+
+.grade-date,
+.exam-date {
+  border-left: 0px;
 }
