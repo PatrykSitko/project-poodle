@@ -37,6 +37,7 @@ h1 {
   color: red !important;
 }
 .popup-close-button {
+  user-select: none;
   cursor: pointer;
   height: 23px;
   border-top: 3px solid gray;
