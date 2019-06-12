@@ -1,34 +1,25 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import "./PopupButton.css";
-export default function PopupButton({ style, content, children }) {
+export function PopupButton({ style, content, children, mousedown }) {
   const [clicked, setClicked] = useState(false);
   const [popupCloseButtonClassName, setPopupCloseButtonClassName] = useState(
     ""
   );
-  const [
-    popupCloseButton_mouseIsDown,
-    setMouseIsDown_popupCloseButton
-  ] = useState(false);
   const [popupButtonClassName, setPopupButtonClassName] = useState("");
-  const [popupButton_mouseIsDown, setMouseIsDown_popupButton] = useState(false);
   return [
     clicked && (
       <div className="popup-window" key="popup-window" style={style}>
         <div className="popup-content">{content}</div>
         <h3
           className={"popup-close-button " + popupCloseButtonClassName}
-          onMouseDown={event => {
-            setMouseIsDown_popupCloseButton(true);
-            setPopupCloseButtonClassName("popup-close-button-mousedown");
-          }}
-          onMouseUp={event => {
-            setMouseIsDown_popupCloseButton(false);
-            setPopupCloseButtonClassName("");
-            setClicked(!clicked);
-          }}
+          onMouseDown={__ =>
+            setPopupCloseButtonClassName("popup-close-button-mousedown")
+          }
+          onMouseUp={__ => setClicked(!clicked)}
           onMouseLeave={__ => setPopupCloseButtonClassName("")}
           onMouseEnter={__ =>
-            popupCloseButton_mouseIsDown &&
+            mousedown &&
             setPopupCloseButtonClassName("popup-close-button-mousedown")
           }
         >
@@ -39,22 +30,18 @@ export default function PopupButton({ style, content, children }) {
     <button
       className={"popup-button " + popupButtonClassName}
       key="popup-button"
-      onMouseDown={__ => {
-        setMouseIsDown_popupButton(true);
-        setPopupButtonClassName("popup-button-mousedown");
-      }}
-      onMouseUp={__ => {
-        setMouseIsDown_popupButton(false);
-        setPopupButtonClassName("");
-        setClicked(!clicked);
-      }}
+      onMouseDown={__ => setPopupButtonClassName("popup-button-mousedown")}
+      onMouseUp={__ => setClicked(!clicked)}
       onMouseLeave={__ => setPopupButtonClassName("")}
       onMouseEnter={__ =>
-        popupButton_mouseIsDown &&
-        setPopupButtonClassName("popup-button-mousedown")
+        mousedown && setPopupButtonClassName("popup-button-mousedown")
       }
     >
       {children}
     </button>
   ];
 }
+
+export default connect(({ mousedown }) => {
+  return { mousedown };
+})(PopupButton);
