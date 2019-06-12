@@ -16,7 +16,10 @@ export function PopupButton({ style, content, children, mousedown }) {
           onMouseDown={__ =>
             setPopupCloseButtonClassName("popup-close-button-mousedown")
           }
-          onMouseUp={__ => setClicked(!clicked)}
+          onMouseUp={__ => {
+            setPopupCloseButtonClassName("");
+            setClicked(!clicked);
+          }}
           onMouseLeave={__ => setPopupCloseButtonClassName("")}
           onMouseEnter={__ =>
             mousedown &&
@@ -31,7 +34,10 @@ export function PopupButton({ style, content, children, mousedown }) {
       className={"popup-button " + popupButtonClassName}
       key="popup-button"
       onMouseDown={__ => setPopupButtonClassName("popup-button-mousedown")}
-      onMouseUp={__ => setClicked(!clicked)}
+      onMouseUp={__ => {
+        setPopupButtonClassName("");
+        setClicked(!clicked);
+      }}
       onMouseLeave={__ => setPopupButtonClassName("")}
       onMouseEnter={__ =>
         mousedown && setPopupButtonClassName("popup-button-mousedown")
