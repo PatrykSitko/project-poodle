@@ -5,6 +5,7 @@
   border: 3px solid gray;
   border-radius: 8px;
   overflow-y: auto;
+  user-select: text;
 }
 /* width */
 #feedback-container::-webkit-scrollbar {
