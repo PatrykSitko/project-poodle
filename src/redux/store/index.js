@@ -1,14 +1,11 @@
-import { createStore } from "redux";
 import bindWindowListeners from "./listeners/window";
-import configure from "./configuration";
-import reducers from "../reducers/all";
+import configuration from "./configuration";
+import { createStore } from "redux";
 
-const store = createStore(
-  reducers,
-  // @ts-ignore
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-configure(store);
+const [reducers, enhancers] = configuration;
+
+const store = createStore(reducers, enhancers);
+
 bindWindowListeners(store);
 
 export default store;
