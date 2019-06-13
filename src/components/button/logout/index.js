@@ -6,7 +6,7 @@ import exit from "../../../images/exit.png";
 import exitHover from "../../../images/exit-hover.png";
 import "./logout.css";
 
-export function LogoutButton({ logout, ...props }) {
+export function Logout({ logout, ...props }) {
   const [image, setImage] = useState(exit);
   return (
     <img
@@ -34,4 +34,4 @@ const dispatch = dispatch => {
 export default connect(
   null,
   dispatch
-)(LogoutButton);
+)(Logout);
