@@ -78,7 +78,7 @@ function setPopupStyle() {
   });
 }
 
-function props({
+function mapStateToProps({
   student: { grades, percentage },
   windowInnerWidth,
   windowInnerHeight
@@ -91,4 +91,4 @@ function props({
   };
 }
 
-export default connect(props)(Grades);
+export default connect(mapStateToProps)(Grades);

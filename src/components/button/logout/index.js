@@ -21,7 +21,7 @@ export function Logout({ logout, ...props }) {
   );
 }
 
-const dispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
       dispatch(
@@ -33,5 +33,5 @@ const dispatch = dispatch => {
 
 export default connect(
   null,
-  dispatch
+  mapDispatchToProps
 )(Logout);

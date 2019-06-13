@@ -41,11 +41,11 @@ export function ViewLoader({
   }
 }
 
-const props = ({ session: { token, url }, student }) => {
+const mapStateToProps = ({ session: { token, url }, student }) => {
   return { token, url, student };
 };
 
-const dispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     updateSessionState: (token, url) =>
       dispatch(updateSessionState(token, url)),
@@ -54,6 +54,6 @@ const dispatch = dispatch => {
 };
 
 export default connect(
-  props,
-  dispatch
+  mapStateToProps,
+  mapDispatchToProps
 )(ViewLoader);

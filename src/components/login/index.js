@@ -90,7 +90,7 @@ function form(props) {
   );
 }
 
-const dispatch = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     updateSessionState: (token, url) => dispatch(updateSessionState(token, url))
   };
@@ -98,5 +98,5 @@ const dispatch = dispatch => {
 
 export default connect(
   null,
-  dispatch
+  mapDispatchToProps
 )(LoginForm);

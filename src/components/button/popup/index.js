@@ -49,8 +49,8 @@ export function PopupButton({ style, content, children, mousedown }) {
   ];
 }
 
-const props = ({ mousedown: { value } }) => {
+const mapStateToProps = ({ mousedown: { value } }) => {
   return { mousedown: value };
 };
 
-export default connect(props)(PopupButton);
+export default connect(mapStateToProps)(PopupButton);

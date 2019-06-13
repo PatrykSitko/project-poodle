@@ -24,8 +24,10 @@ export function UserInfo({ firstName, lastName, nationalNumber, imageURL }) {
   );
 }
 
-function props({ student: { firstName, lastName, nationalNumber, imageURL } }) {
+function mapStateToProps({
+  student: { firstName, lastName, nationalNumber, imageURL }
+}) {
   return { firstName, lastName, nationalNumber, imageURL };
 }
 
-export default connect(props)(UserInfo);
+export default connect(mapStateToProps)(UserInfo);
