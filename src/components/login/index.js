@@ -1,15 +1,8 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { setToken, setUrl } from "../redux/actions";
+import updateSessionState from "../../redux/actions/fetch/session";
 import { connect } from "react-redux";
-import "./LoginForm.css";
-
-const mapDispatchToProps = dispatch => {
-  return {
-    setToken: token => dispatch(setToken(token)),
-    setUrl: url => dispatch(setUrl(url))
-  };
-};
+import "./login.css";
 
 function LoginForm(props) {
   return (
@@ -31,7 +24,7 @@ function validateLogin(values) {
   return errors;
 }
 async function handleSubmit(
-  { setToken, setUrl },
+  { updateSessionState },
   credentials,
   { setSubmitting }
 ) {
@@ -57,8 +50,7 @@ async function handleSubmit(
       break;
     case 200:
       const { token, url } = await response.json();
-      setToken(token);
-      setUrl(url);
+      updateSessionState(token, url);
       break;
     case 500:
       alert("500: server error!");
@@ -97,7 +89,14 @@ function form(props) {
     </Form>
   );
 }
+
+const dispatch = dispatch => {
+  return {
+    updateSessionState: (token, url) => dispatch(updateSessionState(token, url))
+  };
+};
+
 export default connect(
   null,
-  mapDispatchToProps
+  dispatch
 )(LoginForm);

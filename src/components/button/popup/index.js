@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import "./PopupButton.css";
+import "./popup.css";
+
 export function PopupButton({ style, content, children, mousedown }) {
   const [clicked, setClicked] = useState(false);
   const [popupCloseButtonClassName, setPopupCloseButtonClassName] = useState(
@@ -48,6 +49,8 @@ export function PopupButton({ style, content, children, mousedown }) {
   ];
 }
 
-export default connect(({ mousedown }) => {
-  return { mousedown };
-})(PopupButton);
+const props = ({ mousedown: { value } }) => {
+  return { mousedown: value };
+};
+
+export default connect(props)(PopupButton);

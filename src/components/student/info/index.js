@@ -1,12 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import "./UserInfo.css";
-
-function mapStateToProps({
-  data: { firstName, lastName, nationalNumber, imageURL }
-}) {
-  return { firstName, lastName, nationalNumber, imageURL };
-}
+import "./info.css";
 
 export function UserInfo({ firstName, lastName, nationalNumber, imageURL }) {
   return (
@@ -30,4 +24,8 @@ export function UserInfo({ firstName, lastName, nationalNumber, imageURL }) {
   );
 }
 
-export default connect(mapStateToProps)(UserInfo);
+function props({ student: { firstName, lastName, nationalNumber, imageURL } }) {
+  return { firstName, lastName, nationalNumber, imageURL };
+}
+
+export default connect(props)(UserInfo);

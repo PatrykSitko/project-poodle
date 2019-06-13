@@ -1,10 +1,10 @@
 //@ts-nocheck
 import React from "react";
-import PopupButton from "./PopupButton";
-import Feedback from "./Feedback";
-import "./Grade.css";
+import PopupButton from "../../button/popup";
+import Feedback from "../../feedback";
+import "./grade.css";
 
-export default function Grade(props) {
+export default function(props) {
   const { examTitle, feedback, popupStyle, className } = props;
   return [
     <GradeMain key={"GradeMain" + examTitle} {...props} />,

@@ -1,7 +1,7 @@
 import React from "react";
-import "./Feedback.css";
+import "./feedback.css";
 
-export default function Feedback({ children, style }) {
+export default function({ children, style }) {
   return (
     <div id="feedback-container" style={style}>
       {children}
