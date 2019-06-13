@@ -1,6 +1,6 @@
 import React from "react";
-import loading from "../../../images/loading.gif";
+import Loading from "../";
 
 export default function LoadingScreen() {
-  return <img src={loading} alt="loading..." className={"loading-screen"} />;
+  return <Loading className={"loading-screen"} />;
 }
