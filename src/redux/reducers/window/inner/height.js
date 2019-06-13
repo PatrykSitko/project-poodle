@@ -5,11 +5,5 @@ export const initialWindowInnerHeightState = { value: window.innerHeight };
 export default (
   state = initialWindowInnerHeightState,
   { type: action, payload }
-) => {
-  switch (action) {
-    default:
-      return state;
-    case WINDOW_INNER_HEIGHT_CHANGED:
-      return { ...state, ...payload };
-  }
-};
+) =>
+  action === WINDOW_INNER_HEIGHT_CHANGED ? { ...state, ...payload } : state;
