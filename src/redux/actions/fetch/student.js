@@ -1,4 +1,4 @@
-import { FETCHED_STUDENT_DATA } from "../../types";
+import { FETCHED_STUDENT_DATA } from "../types";
 
 export default student => {
   return {

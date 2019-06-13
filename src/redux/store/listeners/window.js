@@ -1,4 +1,4 @@
-import action from "../../../actions/all";
+import action from "../../actions/all";
 
 export default store => {
   window.addEventListener("resize", event => {

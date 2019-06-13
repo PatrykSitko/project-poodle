@@ -1,4 +1,4 @@
-import { MOUSE_UP } from "../../../actions/types";
+import { MOUSE_UP } from "../../actions/types";
 
 export const initialMouseReleasedState = { value: undefined };
 

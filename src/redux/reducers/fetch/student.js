@@ -1,4 +1,4 @@
-import { FETCHED_STUDENT_DATA } from "../../../actions/types";
+import { FETCHED_STUDENT_DATA } from "../../actions/types";
 
 export const initialStudentState = {};
 

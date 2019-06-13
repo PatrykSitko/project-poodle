@@ -1,4 +1,4 @@
-import { MOUSE_DOWN } from "../../../actions/types";
+import { MOUSE_DOWN } from "../../actions/types";
 
 export const initialMousePressedState = { value: undefined };
 

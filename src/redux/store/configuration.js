@@ -1,7 +1,7 @@
 import { combineReducers, applyMiddleware, compose } from "redux";
 import { connectRoutes } from "redux-first-router";
-import reducers from "../../reducers/all";
-import routes from "../routes";
+import reducers from "../reducers/all";
+import routes from "./routes";
 
 export default (() => {
   const { reducer, middleware, enhancer } = connectRoutes(routes);

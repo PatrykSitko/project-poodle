@@ -1,4 +1,4 @@
-import { WINDOW_INNER_HEIGHT_CHANGED } from "../../../types";
+import { WINDOW_INNER_HEIGHT_CHANGED } from "../../types";
 
 export default height => {
   return {

@@ -1,4 +1,4 @@
-import { WINDOW_INNER_WIDTH_CHANGED } from "../../../../actions/types";
+import { WINDOW_INNER_WIDTH_CHANGED } from "../../../actions/types";
 
 export const initialWindowInnerWidthState = { value: window.innerWidth };
 
