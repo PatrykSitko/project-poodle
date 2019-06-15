@@ -36,7 +36,6 @@ export class Grades extends Component {
             <tbody>
               {grades &&
                 grades.map((grade, index) => (
-                  // @ts-ignore
                   <Grade
                     key={index}
                     {...grade}
@@ -64,7 +63,6 @@ export class Grades extends Component {
 }
 function setPopupStyle() {
   if (!this._isMounted) return;
-  // @ts-ignore
   const boundingRect = ReactDOM.findDOMNode(this).getBoundingClientRect();
   const { windowInnerWidth, windowInnerHeight } = this.props;
   const { offset } = this.state;

@@ -32,7 +32,6 @@ async function handleSubmit(
   const response = await fetch("/login", {
     method: "POST",
     headers: {
-      // "access-control-allow-origin": "*",
       "Content-type": "application/json; charset=UTF-8"
     },
     body: JSON.stringify(credentials)
