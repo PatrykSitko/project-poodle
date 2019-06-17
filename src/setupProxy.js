@@ -1,8 +1,8 @@
 const bodyParser = require("body-parser");
-const db = {
+const student = {
   userName: "patryk",
   password: "",
-  token: "test-token",
+  token: "student-token",
   url: "/student/patryk",
   firstName: "Patryk",
   lastName: "Sitko",
@@ -101,34 +101,108 @@ const db = {
   ],
   percentage: 0.336231884057971
 };
+const groups = [
+  {
+    id: 14,
+    groupCode: "Java1",
+    groupName: "Java1",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 15,
+    groupCode: "Java2",
+    groupName: "Java2",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 16,
+    groupCode: "Java3",
+    groupName: "Java3",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 17,
+    groupCode: "JavaIOT",
+    groupName: "JavaIOT",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 18,
+    groupCode: "DotNET",
+    groupName: "DotNET",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 19,
+    groupCode: "PC",
+    groupName: "PC",
+    active: true,
+    studentList: null
+  }
+];
+const instructors = [
+  {
+    userName: "instructor",
+    password: "",
+    token: "instructor-token",
+    url: "/instructor/groups",
+    firstName: "Patryk",
+    lastName: "Sitko",
+    nationalNumber: 200528475036,
+    imageURL: "https://avatars1.githubusercontent.com/u/22419442?s=400&v=4"
+  }
+];
 module.exports = app => {
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: true }));
 
   app.post("/login", (req, res) => {
-    if (
-      req.body.userName === db.userName &&
-      req.body.password === db.password
-    ) {
-      res.status(200);
-      res.json({ url: db.url, token: db.token });
+    res.status(200);
+    if (req.body.userName === "student" && req.body.password === "") {
+      res.json({
+        url: "/student/student",
+        token: "student-token"
+      });
     } else {
-      if (req.body.userName !== db.userName) {
-        res.statusMessage =
-          "We could not find you in our database... contact your teacher";
-        res.sendStatus(203);
+      if (req.body.userName !== "student") {
+        if (req.body.userName === "instructor" && req.body.password === "") {
+          res.json({
+            url: "/instructor/groups",
+            token: "instructor-token"
+          });
+        } else {
+          res.statusMessage =
+            "We could not find you in our database... contact your teacher";
+        }
       } else {
         res.statusMessage = "Wrong password!";
-        res.sendStatus(203);
       }
+      res.sendStatus(203);
     }
   });
 
   app.post("/student/:userName", (req, res) => {
-    const { userName, password, token, ...data } = db;
-    if (req.params.userName === userName && req.body.token === token) {
+    const { userName, password, token, ...data } = student;
+    if (
+      req.params.userName === "student" &&
+      req.body.token === "student-token"
+    ) {
       res.status(200);
       res.json(data);
+    } else {
+      res.statusMessage = "Acces denied!";
+      res.sendStatus(203);
+    }
+  });
+  app.post("/instructor/groups", (req, res) => {
+    if (req.body.token === "instructor-token") {
+      res.status(200);
+      res.json(groups);
     } else {
       res.statusMessage = "Acces denied!";
       res.sendStatus(203);
