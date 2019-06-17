@@ -1,9 +1,9 @@
 const bodyParser = require("body-parser");
 const student = {
-  userName: "patryk",
+  userName: "student",
   password: "",
   token: "student-token",
-  url: "/student/patryk",
+  url: "/student/student",
   firstName: "Patryk",
   lastName: "Sitko",
   nationalNumber: 200528475036,
