@@ -1,6 +1,8 @@
-import { MOUSE_DOWN } from "../../actions/types";
+import { MOUSE_DOWN, MOUSE_UP } from "../../actions/types";
 
 export const initialMouseDownState = { value: undefined };
 
 export default (state = initialMouseDownState, { type: action, payload }) =>
-  action === MOUSE_DOWN ? { ...state, ...payload } : state;
+  action === MOUSE_DOWN || action === MOUSE_UP
+    ? { ...state, ...payload }
+    : state;
