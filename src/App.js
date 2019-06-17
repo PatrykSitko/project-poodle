@@ -1,16 +1,24 @@
-import React from "react";
+import { browserHistory } from "./redux/store/configuration";
+import { Router, Switch, Route } from "react-router-dom";
 import ShowLoginScreen from "./components/login";
-import LoadView from "./components/view";
+import Student from "./components/view/student";
 import { connect } from "react-redux";
+import React from "react";
 import "./App.css";
 
-function props({ session }) {
-  return {
-    isConnectedThenLoadView: () =>
-      session && session.token && session.url && <LoadView />
-  };
-}
+const mapStateToProps = ({ session: { token } }) => {
+  return { token };
+};
+export const App = ({ token }) => (
+  <Router history={browserHistory}>
+    {!token ? (
+      <Route path="/" component={ShowLoginScreen} />
+    ) : (
+      <Switch>
+        <Route path="/student/:userName" exact component={Student} />
+      </Switch>
+    )}
+  </Router>
+);
 
-const App = user => user.isConnectedThenLoadView() || <ShowLoginScreen />;
-
-export default connect(props)(App);
+export default connect(mapStateToProps)(App);
