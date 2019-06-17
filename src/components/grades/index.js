@@ -48,7 +48,7 @@ export class Grades extends Component {
             </tbody>
           </table>
         </div>
-        <h2>Percentage: {percentage}%</h2>
+        <h2>Percentage: {Math.floor(percentage * 100)}%</h2>
       </div>
     );
   }
