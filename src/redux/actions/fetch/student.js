@@ -9,10 +9,8 @@ export function setStudent(student) {
 
 export default () =>
   async function(dispatch, getState) {
-    console.log(dispatch, getState);
     const url = await getState().router.pathname;
     const token = await getState().session.token;
-    console.log(url, token);
     const response = await fetch(url, {
       method: "POST",
       headers: {
