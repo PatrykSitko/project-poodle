@@ -4,6 +4,12 @@ import updateSessionState from "../../redux/actions/fetch/session";
 import { connect } from "react-redux";
 import "./login.css";
 
+const mapDispatchToProps = dispatch => {
+  return {
+    updateSessionState: credentials => dispatch(updateSessionState(credentials))
+  };
+};
+
 function LoginForm(props) {
   return (
     <Formik
@@ -28,34 +34,7 @@ async function handleSubmit(
   credentials,
   { setSubmitting }
 ) {
-  setSubmitting(true);
-  const response = await fetch("/login", {
-    method: "POST",
-    headers: {
-      "Content-type": "application/json; charset=UTF-8"
-    },
-    body: JSON.stringify(credentials)
-  });
-  switch (response.status) {
-    case 203:
-      alert(
-        `${response.status}, Sorry dear ${credentials.userName} ${
-          response.statusText
-        }`
-      );
-      break;
-    default:
-      alert("access denied!");
-      break;
-    case 200:
-      const { token, url } = await response.json();
-      updateSessionState(token, url);
-      break;
-    case 500:
-      alert("500: server error!");
-      break;
-  }
-  setSubmitting(false);
+  updateSessionState({ credentials, setSubmitting });
 }
 function form(props) {
   return (
@@ -88,12 +67,6 @@ function form(props) {
     </Form>
   );
 }
-
-const mapDispatchToProps = dispatch => {
-  return {
-    updateSessionState: (token, url) => dispatch(updateSessionState(token, url))
-  };
-};
 
 export default connect(
   null,

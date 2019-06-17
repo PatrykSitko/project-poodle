@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import updateSessionState from "../../../redux/actions/fetch/session";
+import { updateSession } from "../../../redux/actions/fetch/session";
 import { initialSessionState } from "../../../redux/reducers/fetch/session";
+import { push } from "redux-first-routing";
 import exit from "../../../images/exit.png";
 import exitHover from "../../../images/exit-hover.png";
 import "./logout.css";
@@ -24,9 +25,8 @@ export function Logout({ logout, ...props }) {
 const mapDispatchToProps = dispatch => {
   return {
     logout: () => {
-      dispatch(
-        updateSessionState(initialSessionState.token, initialSessionState.url)
-      );
+      dispatch(push("/"));
+      dispatch(updateSession(initialSessionState.token));
     }
   };
 };
