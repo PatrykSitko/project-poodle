@@ -178,11 +178,12 @@ module.exports = app => {
         } else {
           res.statusMessage =
             "We could not find you in our database... contact your teacher";
+          res.sendStatus(203);
         }
       } else {
         res.statusMessage = "Wrong password!";
+        res.sendStatus(203);
       }
-      res.sendStatus(203);
     }
   });
 
