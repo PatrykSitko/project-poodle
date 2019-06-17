@@ -1,15 +1,15 @@
 import { combineReducers, applyMiddleware, compose } from "redux";
-import { connectRoutes } from "redux-first-router";
+import { createBrowserHistory, routerMiddleware } from "redux-first-routing";
 import reducers from "../reducers/all";
-import routes from "./routes";
+import thunk from "redux-thunk";
+import router from "./router";
+
+export const browserHistory = (() => createBrowserHistory())();
 
 export default (() => {
-  const { reducer, middleware, enhancer } = connectRoutes(routes);
-
-  const rootReducer = combineReducers({ ...reducers, location: reducer });
-  const middlewares = applyMiddleware(middleware);
+  const rootReducer = combineReducers({ ...reducers, router: router });
+  const middlewares = applyMiddleware(routerMiddleware(browserHistory), thunk);
   const enhancers = compose(
-    enhancer,
     middlewares,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
