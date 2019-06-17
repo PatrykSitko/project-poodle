@@ -2,11 +2,12 @@ import { push } from "redux-first-routing";
 import {
   ESTABLISHING_SESSION,
   SESSION_ESTABLISHED,
-  FAILED_ESTABLISHING_SESSION
+  FAILED_ESTABLISHING_SESSION,
+  LOGGED_OUT
 } from "../types";
 
 export function updateSession(token) {
-  return { type: SESSION_ESTABLISHED, payload: { token } };
+  return { type: token ? SESSION_ESTABLISHED : LOGGED_OUT, payload: { token } };
 }
 
 export default ({ credentials, setSubmitting }) => async (
