@@ -8,6 +8,8 @@ to allow their students to track their exam-scores and for teachers to modify an
 ## What technologies are in use?
 
 - [React](https://github.com/facebook/create-react-app#readme)
+- [React-Router-Dom](https://github.com/ReactTraining/react-router/tree/master/packages/react-router-dom#readme)
 - [Formik](https://jaredpalmer.com/formik/)
 - [Redux](https://redux.js.org/)
-- [Redux-First-Router](https://github.com/faceyspacey/redux-first-router#readme)
+- [Redux-Thunk](https://github.com/reduxjs/redux-thunk#readme)
+- [Redux-First-Routing](https://github.com/mksarge/redux-first-routing#readme)
