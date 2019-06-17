@@ -3,7 +3,7 @@ const db = {
   userName: "patryk",
   password: "",
   token: "test-token",
-  url: "student/patryk",
+  url: "/student/patryk",
   firstName: "Patryk",
   lastName: "Sitko",
   nationalNumber: 200528475036,
