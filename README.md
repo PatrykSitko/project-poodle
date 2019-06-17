@@ -13,3 +13,5 @@ to allow their students to track their exam-scores and for teachers to modify an
 - [Redux](https://redux.js.org/)
 - [Redux-Thunk](https://github.com/reduxjs/redux-thunk#readme)
 - [Redux-First-Routing](https://github.com/mksarge/redux-first-routing#readme)
+
+©️ Patryk Sitko
