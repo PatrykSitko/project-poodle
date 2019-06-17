@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import Grades from "../grades";
-import StudentInfo from "../student/info";
-import Logout from "../button/logout";
+import Grades from "../components/grades";
+import StudentInfo from "../components/student/info";
+import Logout from "../components/button/logout";
 import { connect } from "react-redux";
-import fetchStudentInfo from "../../redux/actions/fetch/student";
+import fetchStudentInfo from "../redux/actions/fetch/student";
 
 function mapDispatchToProps(dispatch) {
   return {
