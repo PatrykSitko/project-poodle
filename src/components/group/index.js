@@ -14,6 +14,7 @@ export function Group({
   className,
   columns,
   globalStyle: memberGlobalStyle,
+  globalClassName: memberGlobalClassName,
   filters: memberFilters,
   windowInnerWidth,
   ...group
@@ -102,11 +103,17 @@ export function Group({
             props.style.width =
               componentWidth / members.length - margin * 2 - padding * 2;
             props.id = member.key;
+            const memberClassName =
+              (props.className ? props.className : "") +
+              "" +
+              (memberGlobalClassName ? " " + memberGlobalClassName : "");
+            delete props.className;
             return (
               <Member
                 {...props}
                 style={{ ...props.style, ...memberGlobalStyle }}
                 key={member.key}
+                className={memberClassName}
               />
             );
           })}
