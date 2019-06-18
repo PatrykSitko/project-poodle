@@ -5,7 +5,9 @@ import Member from "./member";
 import "./group.css";
 
 const mapStateToProps = ({ windowInnerWidth: { value } }) => {
-  return { windowInnerWidth: value };
+  return {
+    windowInnerWidth: value
+  };
 };
 export function Group({
   children: members,
@@ -52,7 +54,6 @@ export function Group({
   if (ammountOfColumns < 1) {
     setAmmountOfColumns(1);
   }
-
   let rows = undefined;
   if (members) {
     if (memberFilters) {
@@ -77,37 +78,43 @@ export function Group({
       }
       rows.push(row.filter(member => member !== undefined));
     }
-    rows = rows.map(row => (
-      <span className="group-row">
-        {row.map((member, index, members) => {
-          const props = { ...member.props };
-          if (!props.style) {
-            props.style = {};
-          }
-          let margin = 0;
-          let padding = 0;
-          if (memberGlobalStyle) {
-            if (typeof memberGlobalStyle.margin === "number") {
-              margin = memberGlobalStyle.margin;
+    rows = rows.map((row, index) => {
+      return (
+        <span className="group-row" key={index}>
+          {row.map((member, index, members) => {
+            const props = { ...member.props };
+            if (!props.style) {
+              props.style = {};
             }
-            if (typeof memberGlobalStyle.padding === "number") {
-              padding = memberGlobalStyle.padding;
+            if (member.type.name !== "Member") {
+              return member;
             }
-          }
-          props.style.width =
-            componentWidth / members.length - margin * 2 - padding * 2;
-          props.id = member.key;
-          return (
-            <Member
-              {...props}
-              style={{ ...props.style, ...memberGlobalStyle }}
-              key={member.key}
-            />
-          );
-        })}
-      </span>
-    ));
+            let margin = 0;
+            let padding = 0;
+            if (memberGlobalStyle) {
+              if (typeof memberGlobalStyle.margin === "number") {
+                margin = memberGlobalStyle.margin;
+              }
+              if (typeof memberGlobalStyle.padding === "number") {
+                padding = memberGlobalStyle.padding;
+              }
+            }
+            props.style.width =
+              componentWidth / members.length - margin * 2 - padding * 2;
+            props.id = member.key;
+            return (
+              <Member
+                {...props}
+                style={{ ...props.style, ...memberGlobalStyle }}
+                key={member.key}
+              />
+            );
+          })}
+        </span>
+      );
+    });
   }
+  delete group.dispatch;
   return (
     <div
       {...group}

@@ -1,7 +1,26 @@
 .group {
   display: inline-block;
   width: 100%;
+  overflow: auto;
 }
 .group-row {
   display: flex;
+}
+/* width */
+.group::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.group::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  background: white;
+  border-radius: 10px;
+}
+
+/* Handle */
+.group::-webkit-scrollbar-thumb {
+  background: rgb(230, 228, 228);
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
 }
