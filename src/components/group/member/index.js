@@ -1,7 +1,7 @@
 import React from "react";
 import "./member.css";
 
-export default function Individual({ children, className, ...props }) {
+export default function Member({ children, className, ...props }) {
   return (
     <div
       {...props}

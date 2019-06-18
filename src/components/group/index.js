@@ -77,12 +77,15 @@ export function Group({
       }
       rows.push(row.filter(member => member !== undefined));
     }
-    rows = rows.map(row => (
-      <span className="group-row">
+    rows = rows.map((row, index) => (
+      <span className="group-row" key={index}>
         {row.map((member, index, members) => {
           const props = { ...member.props };
           if (!props.style) {
             props.style = {};
+          }
+          if (member.type.name !== "Member") {
+            return member;
           }
           let margin = 0;
           let padding = 0;
@@ -108,6 +111,7 @@ export function Group({
       </span>
     ));
   }
+  delete group.dispatch;
   return (
     <div
       {...group}
