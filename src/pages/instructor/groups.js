@@ -232,8 +232,7 @@ export function Groups({ widnowInnerWidth }) {
           libero finibus vel. Suspendisse ultrices orci vitaeLorem ipsum dolor
           sit amet, consectetur adipiscing elit. Sed maximus lacinia turpis, a
           laoreet libero finibus vel. Suspendisse ultrices orci vitae metus
-          suscipit ullamcorpe
-            console.log(props);r. Aliquam suscipit sapien ac dui maximus porta.
+          suscipit ullamcorper. Aliquam suscipit sapien ac dui maximus porta.
           Nam gravida hendrerit ullamcorper. Morbi semper finibus nibh, eu
           ornare turpis sagittis condimentum. Proin ut nisi tortor. Aliquam
           congue erat eget ex sodales consectetur. Nam vel diam sit amet nisl
