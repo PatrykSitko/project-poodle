@@ -11,7 +11,8 @@ const mapStateToProps = ({ windowInnerWidth: { value } }) => {
 export function Groups({ widnowInnerWidth }) {
   return (
     <Group
-      globalStyle={{ margin: 3, padding: 3,maxHeight:400 }}
+      globalStyle={{ margin: 3, padding: 3 }}
+      globalClassName='groups-member'
       /* columns={[[1, 500], [2, 1000], [3, 1500]]} */
       columns={Math.floor(widnowInnerWidth / 500)}
       filters={[
