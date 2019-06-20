@@ -62,7 +62,7 @@ export function Group({
         memberFilters = [memberFilters];
       }
       memberFilters.forEach(filter => {
-        if (typeof filter === "function") {
+        if (members.filter && typeof filter === "function") {
           members = members.filter(filter);
         }
       });
@@ -100,8 +100,10 @@ export function Group({
                 padding = memberGlobalStyle.padding;
               }
             }
-            props.style.width =
-              componentWidth / members.length - margin * 2 - padding * 2;
+            if (!props.style.width) {
+              props.style.width =
+                componentWidth / members.length - margin * 2 - padding * 2;
+            }
             props.id = member.key;
             const memberClassName =
               (props.className ? props.className : "") +
