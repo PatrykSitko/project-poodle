@@ -9,9 +9,8 @@ export const browserHistory = (() => createBrowserHistory())();
 export default (() => {
   const rootReducer = combineReducers({ ...reducers, router: router });
   const middlewares = applyMiddleware(routerMiddleware(browserHistory), thunk);
-  const enhancers = compose(
-    middlewares,
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  );
+  const enhancers = window.__REDUX_DEVTOOLS_EXTENSION__?compose(
+    middlewares, window.__REDUX_DEVTOOLS_EXTENSION__()
+  ):middlewares;
   return [rootReducer, enhancers];
 })();
