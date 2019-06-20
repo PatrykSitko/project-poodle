@@ -2,6 +2,7 @@ import React from "react";
 import Group from "../../components/group";
 import Member from "../../components/group/member";
 import ImageButton from "../../components/button/image";
+import Logout from "../../components/button/logout";
 import javaLogo from "../../images/java-logo.png";
 import javaIotLogo from "../../images/java-iot-logo.png";
 import dotNetLogo from "../../images/dotnet-logo.png";
@@ -14,8 +15,10 @@ const mapStateToProps = ({ windowInnerWidth: { value } }) => {
 };
 
 export function Groups({ widnowInnerWidth }) {
-  return (
+  return [
+    <Logout key="Logout" />,
     <Group
+      key="groups"
       globalStyle={{ margin: 3 }}
       globalClassName="groups-member"
       /* columns={[[1, 500], [2, 1000], [3, 1500]]} */
@@ -50,7 +53,7 @@ export function Groups({ widnowInnerWidth }) {
         <ImageButton image={pcLogo} go="/student/student" />
       </Member>
     </Group>
-  );
+  ];
 }
 
 export default connect(mapStateToProps)(Groups);
