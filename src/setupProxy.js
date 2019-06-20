@@ -190,8 +190,9 @@ module.exports = app => {
   app.post("/student/:userName", (req, res) => {
     const { userName, password, token, ...data } = student;
     if (
-      req.params.userName === "student" &&
-      req.body.token === "student-token"
+      (req.params.userName === "student" &&
+        req.body.token === "student-token") ||
+      req.body.token === "instructor-token"
     ) {
       res.status(200);
       res.json(data);
