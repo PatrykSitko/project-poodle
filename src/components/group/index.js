@@ -33,6 +33,7 @@ export function Group({
   }, [groupComponent, componentWidth, windowInnerWidth]);
 
   if (typeof columns === "number") {
+    console.log(columns);
     columns = [[columns, 0]];
   }
 
@@ -48,7 +49,6 @@ export function Group({
       });
     }
   }, [columns, componentWidth, windowInnerWidth]);
-
   if (ammountOfColumns > members.length) {
     setAmmountOfColumns(members.length);
   }
@@ -57,6 +57,7 @@ export function Group({
   }
   let rows = undefined;
   if (members) {
+    members = members.flat();
     if (memberFilters) {
       if (memberFilters.constructor.name !== "Array") {
         memberFilters = [memberFilters];
@@ -87,7 +88,7 @@ export function Group({
             if (!props.style) {
               props.style = {};
             }
-            if (member.type.name !== "Member") {
+            if (!member.type || member.type.name !== "Member") {
               return member;
             }
             let margin = 0;
