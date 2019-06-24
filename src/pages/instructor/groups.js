@@ -1,59 +1,55 @@
-import React from "react";
-import Group from "../../components/group";
-import Member from "../../components/group/member";
-import ImageButton from "../../components/button/image";
+import React, { useState, useEffect } from "react";
+import Filter from "../../components/filter/key";
+import Groups from "../../components/instructor/groups";
 import Logout from "../../components/button/logout";
-import javaLogo from "../../images/java-logo.png";
-import javaIotLogo from "../../images/java-iot-logo.png";
-import dotNetLogo from "../../images/dotnet-logo.png";
-import pcLogo from "../../images/pc-logo.png";
 import { connect } from "react-redux";
-import "./groups.css";
+import fetchGroupsInfo from "../../redux/actions/fetch/instructor/groups";
 
-const mapStateToProps = ({ windowInnerWidth: { value } }) => {
-  return { widnowInnerWidth: value };
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchGroupsInfo: () => {
+      dispatch(fetchGroupsInfo());
+    }
+  };
 };
 
-export function Groups({ widnowInnerWidth }) {
-  return [
-    <Logout key="Logout" />,
-    <Group
-      key="groups"
-      globalStyle={{ margin: 3 }}
-      globalClassName="groups-member"
-      /* columns={[[1, 500], [2, 1000], [3, 1500]]} */
-      columns={Math.floor(widnowInnerWidth / 500)}
-      filters={[
-        member => member.props.children !== "hello",
-        member => member.props.children !== "patryk",
-        member => member.props.children !== "world",
-        member => {
-          console.log(member);
-          return true;
-        }
-      ]}
-      className="groups"
-    >
-      <Member key="2">
-        <ImageButton image={javaLogo} go="/student/student">
-          Java1
-        </ImageButton>
-      </Member>
-      <Member key="7">
-        <ImageButton image={dotNetLogo} go="/student/student">
-          dotNet
-        </ImageButton>
-      </Member>
-      <Member key="8">
-        <ImageButton image={javaIotLogo} go="/student/student">
-          Java & IOT
-        </ImageButton>
-      </Member>
-      <Member key="9">
-        <ImageButton image={pcLogo} go="/student/student" />
-      </Member>
-    </Group>
-  ];
+export function InstructorGroups({ fetchGroupsInfo }) {
+  const [keys, setKeys] = useState([]);
+  const [strict, setStrict] = useState(false);
+  useEffect(() => {
+    fetchGroupsInfo();
+  }, [fetchGroupsInfo]);
+  return (
+    <span>
+      <Filter {...{ keys, setKeys }} toLowerCase />
+      <Logout />
+      <Groups
+        filter={member => {
+          const buttonValue =
+            member &&
+            member.props &&
+            member.props.children &&
+            member.props.children.props &&
+            member.props.children.props.children &&
+            member.props.children.props.children.toLowerCase &&
+            member.props.children.props.children.toLowerCase();
+          if (strict) {
+            return buttonValue && buttonValue.includes(keys.join(""));
+          } else {
+            for (let key of keys) {
+              if (!buttonValue || !buttonValue.includes(key)) {
+                return false;
+              }
+            }
+            return buttonValue;
+          }
+        }}
+      />
+    </span>
+  );
 }
 
-export default connect(mapStateToProps)(Groups);
+export default connect(
+  null,
+  mapDispatchToProps
+)(InstructorGroups);
