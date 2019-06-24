@@ -7,11 +7,11 @@ import exit from "../../../images/exit.png";
 import exitHover from "../../../images/exit-hover.png";
 import "./logout.css";
 
-export function Logout({ logout, ...props }) {
+export function Logout({ logout,absolute, ...props }) {
   const [image, setImage] = useState(exit);
   return (
     <img
-      className="logout-button"
+      className={`logout-button ${absolute?'absolute':''}`}
       src={image}
       alt={"Logout"}
       onMouseEnter={() => setImage(exitHover)}
