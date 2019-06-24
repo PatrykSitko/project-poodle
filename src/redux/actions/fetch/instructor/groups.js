@@ -1,5 +1,7 @@
+import { FETCHED_GROUPS_DATA } from "../../types";
+
 export function setGroups(groups) {
-  return { type: "x", payload: [...groups] };
+  return { type: FETCHED_GROUPS_DATA, payload: [...groups] };
 }
 
 export default () => async (dispatch, getState) => {
@@ -13,6 +15,5 @@ export default () => async (dispatch, getState) => {
     body: JSON.stringify({ token })
   });
   const data = await response.json();
-  console.log(data);
   dispatch(setGroups(data));
 };
