@@ -4,14 +4,17 @@
 #user-info {
   float: left;
   width: calc(100% - 400px);
+  transition: width 2s ease-in;
 }
 #user-info-left {
   float: left;
-  width: 550px;
+  width: 480px;
+  transition: width 2s ease-in;
 }
 #user-info-right {
   float: left;
-  width: calc(100% - 551px);
+  width: calc(100% - 481px);
+  transition: width 2s ease-in;
   border-right: 1px solid gray;
 }
 #user-info p {
@@ -21,6 +24,7 @@
   height: 65px;
   border-right: 0px;
   width: 100%;
+  transition: font-size 2s ease-in, height 2s ease-in;
 }
 
 #first-name {
@@ -28,6 +32,7 @@
   border: 3px solid gray;
   border-bottom: 1px dotted black;
   border-left: 0px;
+  text-indent: 15px;
 }
 #last-name {
   float: right;
@@ -36,6 +41,7 @@
   border-top: 1px dotted black;
   border-bottom: 1px dotted black;
   border-left: 0px;
+  text-indent: 15px;
 }
 #national-number {
   float: right;
@@ -43,6 +49,7 @@
   border: 3px solid gray;
   border-top: 1px dotted black;
   border-left: 0px;
+  text-indent: 15px;
 }
 
 #first-name-label {
@@ -50,27 +57,28 @@
   border-top-left-radius: 100px;
   border: 3px solid gray;
   border-bottom: 1px dotted black;
-  text-indent: 316px;
+  text-align: right;
 }
 #last-name-label {
   background-color: white;
   border: 3px solid gray;
   border-top: 1px dotted black;
   border-bottom: 1px dotted black;
-  text-indent: 165px;
+  text-align: right;
 }
 #national-number-label {
   background-color: lightgray;
   border-bottom-left-radius: 100px;
   border: 3px solid gray;
   border-top: 1px dotted black;
-  text-indent: 50px;
+  text-align: right;
 }
 #user-image-frame {
   height: 400px;
   width: 400px;
   float: right;
   padding-bottom: 3px;
+  transition: width 2s ease-in, height 2s ease-in;
 }
 #user-image {
   width: calc(100% - 3px);
@@ -80,4 +88,30 @@
   border-top-left-radius: 0px;
   border-bottom-left-radius: 140px;
   border-bottom-right-radius: 140px;
+}
+
+@media only screen and (max-width: 1300px) {
+  #user-image-frame {
+    height: 200px;
+    width: 200px;
+    float: right;
+    padding-bottom: 3px;
+  }
+  #user-info {
+    width: calc(100% - 200px);
+  }
+  #user-info-left {
+    width: 250px;
+  }
+  #user-info-right {
+    width: calc(100% - 251px);
+  }
+  #user-info p {
+    font-size: 24px;
+    height: 25px;
+    padding: auto 0;
+    margin: 0 auto;
+    border-right: 0px;
+    width: 100%;
+  }
 }
