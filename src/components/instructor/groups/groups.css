@@ -1,0 +1,7 @@
+.groups {
+  height: calc(100vh - 63px);
+}
+
+.groups-member {
+  max-height: 500px;
+}
