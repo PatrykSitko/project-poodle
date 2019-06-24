@@ -125,8 +125,22 @@ const groups = [
   },
   {
     id: 17,
-    groupCode: "JavaIOT",
-    groupName: "JavaIOT",
+    groupCode: "JavaIOT1",
+    groupName: "JavaIOT1",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 17,
+    groupCode: "JavaIOT2",
+    groupName: "JavaIOT2",
+    active: true,
+    studentList: null
+  },
+  {
+    id: 17,
+    groupCode: "JavaIOT3",
+    groupName: "JavaIOT3",
     active: true,
     studentList: null
   },
