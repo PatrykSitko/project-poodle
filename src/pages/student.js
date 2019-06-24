@@ -16,7 +16,7 @@ export function Student({ fetchStudentInfo }) {
   }, [fetchStudentInfo]);
   return (
     <span>
-      <Logout key="Logout" />
+      <Logout key="Logout" absolute />
       <StudentInfo key="UserInfo" />
       <Grades key="Grades" />
     </span>
