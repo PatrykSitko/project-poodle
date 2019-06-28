@@ -14,14 +14,19 @@ export const Button = ({
   go,
   children,
   className,
+  childrenClassName,
   style,
   textStyle,
   lineHeight = "50%",
+  Display,
   onClick,
   ...other
 }) => {
   const button = useRef();
   const [height, setHeight] = useState(1);
+  const [showDisplay, setShowDisplay] = useState(false);
+  const [displayHidden, setDisplayHidden] = useState(true);
+  const [displayerOpacity, setDisplayerOpacity] = useState(0);
   useEffect(() => {
     if (button) {
       const buttonHeight = ReactDOM.findDOMNode(
@@ -34,7 +39,6 @@ export const Button = ({
   }, [button, height]);
   let fontStyle = {};
   if (textStyle) {
-    console.log(textStyle);
     if (textStyle.center) {
       fontStyle.float = "none";
       fontStyle.marginLeft = "auto";
@@ -42,15 +46,60 @@ export const Button = ({
     }
     if (textStyle.fontSize && textStyle.fontSize === "auto") {
       fontStyle.fontSize = height / 2;
-      fontStyle.lineHeight = height / 2 - fontStyle.fontSize;
+      fontStyle.padding = `calc(25% - ${fontStyle.fontSize}px) 0px`;
     }
   }
-  const childrenClassName =
-    typeof children === "string" ? "button-children-string" : "button-children";
-  return (
+  childrenClassName =
+    typeof children === "string"
+      ? `button-children-string ${childrenClassName ? childrenClassName : ""}`
+      : `button-children ${childrenClassName ? childrenClassName : ""}`;
+  let Displayer = () => "";
+  useEffect(() => {
+    if (showDisplay && displayerOpacity <= 1) {
+      const timeout = setTimeout(() => {
+        setDisplayHidden(false);
+        setDisplayerOpacity(displayerOpacity + 0.1);
+        clearTimeout(timeout);
+      }, 27);
+    }
+    if (!showDisplay && displayerOpacity >= 0) {
+      const timeout = setTimeout(() => {
+        setDisplayerOpacity(displayerOpacity - 0.1);
+        if (displayerOpacity < 0.1) {
+          setDisplayHidden(true);
+        }
+        clearTimeout(timeout);
+      }, 17);
+    }
+  }, [showDisplay, displayerOpacity, setDisplayerOpacity]);
+  if (typeof Display === "function") {
+    Displayer = Display(
+      setShowDisplay,
+      showDisplay ? !displayHidden : showDisplay,
+      displayerOpacity
+    );
+  }
+  return [
+    <div
+      style={{ opacity: displayerOpacity }}
+      className="displayer"
+      hidden={!Displayer || displayHidden}
+      onClick={e => {
+        if (e.target.className === "displayer") {
+          setShowDisplay(false);
+        }
+      }}
+    >
+      <Displayer />
+    </div>,
     <div
       {...other}
       ref={button}
+      onMouseUp={() => {
+        if (Display) {
+          setShowDisplay(!showDisplay);
+        }
+      }}
       onClick={go ? push(go) : onClick}
       className={`button ${className ? " " + className : ""}`}
       style={{ ...style }}
@@ -59,7 +108,7 @@ export const Button = ({
         {children}
       </p>
     </div>
-  );
+  ];
 };
 
 export default connect(
