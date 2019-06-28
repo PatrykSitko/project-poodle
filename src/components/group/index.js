@@ -31,9 +31,10 @@ export function Group({
       setComponentWidth(groupComponentWidth);
     }
   }, [groupComponent, componentWidth, windowInnerWidth]);
-
+  if (!columns) {
+    columns = 1;
+  }
   if (typeof columns === "number") {
-    console.log(columns);
     columns = [[columns, 0]];
   }
 
@@ -49,15 +50,19 @@ export function Group({
       });
     }
   }, [columns, componentWidth, windowInnerWidth]);
-  if (ammountOfColumns > members.length) {
-    setAmmountOfColumns(members.length);
-  }
+  let rows = undefined;
   if (ammountOfColumns < 1) {
     setAmmountOfColumns(1);
   }
-  let rows = undefined;
   if (members) {
-    members = members.flat();
+    if (members.length && ammountOfColumns > members.length) {
+      setAmmountOfColumns(members.length);
+    }
+    if (members.flat) {
+      members = members.flat();
+    } else if (members.constructor.name !== "Array") {
+      members = [members];
+    }
     if (memberFilters) {
       if (memberFilters.constructor.name !== "Array") {
         memberFilters = [memberFilters];
@@ -69,16 +74,18 @@ export function Group({
       });
     }
     rows = [];
-    for (
-      let member = 0;
-      member < members.length;
-      member = member + ammountOfColumns
-    ) {
-      const row = [];
-      for (let index = 0; index < ammountOfColumns; index++) {
-        row.push(members[member + index]);
+    if (members.length) {
+      for (
+        let member = 0;
+        member < members.length;
+        member = member + ammountOfColumns
+      ) {
+        const row = [];
+        for (let index = 0; index < ammountOfColumns; index++) {
+          row.push(members[member + index]);
+        }
+        rows.push(row.filter(member => member !== undefined));
       }
-      rows.push(row.filter(member => member !== undefined));
     }
     rows = rows.map((row, index) => {
       return (
@@ -101,7 +108,7 @@ export function Group({
                 padding = memberGlobalStyle.padding;
               }
             }
-            if (!props.style.width) {
+            if (!props.style.width || props.style.width <= 1) {
               props.style.width =
                 componentWidth / members.length - margin * 2 - padding * 2;
             }
