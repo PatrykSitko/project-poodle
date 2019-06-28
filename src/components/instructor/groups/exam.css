@@ -1,0 +1,27 @@
+.instructor-exam,
+.instructor-exam-input {
+  width: 100%;
+  border: none;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  text-align: center;
+  overflow: hidden;
+}
+.instructor-exam {
+  cursor: pointer;
+  transition: background-color 0.35s ease-in;
+}
+.instructor-exam:hover {
+  background-color: red;
+}
+.instructor-exam-input {
+  margin: 0 auto;
+  width: 90%;
+  border: none;
+}
+.instructor-exam-date-input {
+  padding-left: 1.5px;
+}
+.instructor-exam-weight {
+  border-right: none;
+}
