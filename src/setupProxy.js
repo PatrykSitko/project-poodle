@@ -159,6 +159,101 @@ const groups = [
     studentList: null
   }
 ];
+
+const group = {
+  id: 14,
+  groupCode: "Java1",
+  groupName: "Java1",
+  active: true,
+  examList: [
+    {
+      date: null,
+      examTitle: "Test exam 9",
+      examMaxGrade: 120,
+      examWeight: 15
+    }
+  ],
+  studentList: [
+    {
+      studentHash:
+        "4549e672770b1fd163ac68a0bcc203e40298394d536c8eff4cdd814d5bd79c42",
+      studentName: "Frances Reinold",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "f98c21117fd5b51ac796fa6e8c560a61c32370615c06af2615f3e0bc10b8c3eb",
+      studentName: "Ninnette Redman",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "367086e8e22dc0a24715f55a6b539363b44200e2c5df22b9d7fb6d8214dcd6be",
+      studentName: "Annalise Orest",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "60ca21c08e0290809506bc07ecd9bf13911397552a35ff5904cf85feb3dd8a2a",
+      studentName: "Margot Brianna",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "06427fc6becb63639cb38811b6ba41266d690eafcf01f8e0c7775a94adb56c98",
+      studentName: "Doreen Alage",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "969f93943b3913a0aca5455b49fc1514a2f2b41169fd94b245faa40998490f8a",
+      studentName: "Kaylyn Josephine",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "2bac3c49958d43fede79c4762ab3feb05a5da44fdae81a55bdc1ac8ee0bf5b98",
+      studentName: "Eleen Mellisa",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "dec32b54d6eaa97e790460763a61b4782a9a9ff355c8977f02ad237873a328e9",
+      studentName: "Jasmin Aaren",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "122bd2d2423b8a7f00e6b7996b1fe7525d893c4c6eb579e426ef32b94aca2d6e",
+      studentName: "Corella Lodhia",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "81b661986fed2ee6c56b30fec59f1b478ea9559cde51e446c09e690c3ecc268f",
+      studentName: "Othella Joel",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "e494492f8b45344432ce9c9239fc5c999aa48254d5e866a6fb6fa44c2185f3bf",
+      studentName: "Geralda Morley",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "91852ccbd37109bc597805618dfe175064876456c539738e504c413bfb375d54",
+      studentName: "Ottilie Arlana",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    },
+    {
+      studentHash:
+        "1a8e25e333217a8f1cf220e8fdd2515266d2921d29c116aa7eddcddd6309ada4",
+      studentName: "Yvette Carvey",
+      imageURL: "https://i.imgur.com/veXMns9.png"
+    }
+  ]
+};
 const instructors = [
   {
     userName: "instructor",
@@ -186,7 +281,7 @@ module.exports = app => {
       if (req.body.userName !== "student") {
         if (req.body.userName === "instructor" && req.body.password === "") {
           res.json({
-            url: "/instructor/groups",
+            url: "/instructor/group",
             token: "instructor-token"
           });
         } else {
@@ -215,13 +310,12 @@ module.exports = app => {
       res.sendStatus(203);
     }
   });
-  app.post("/instructor/groups", (req, res) => {
-    if (req.body.token === "instructor-token") {
-      res.status(200);
-      res.json(groups);
-    } else {
-      res.statusMessage = "Acces denied!";
-      res.sendStatus(203);
-    }
+  app.get("/instructor/group", (req, res) => {
+    res.status(200);
+    res.json(groups);
+  });
+  app.get("/instructor/group/:id", (req, res) => {
+    res.status(200);
+    res.json(group);
   });
 };
