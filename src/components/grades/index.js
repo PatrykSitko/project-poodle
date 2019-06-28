@@ -5,31 +5,15 @@ import Grade from "./grade";
 import "./grades.css";
 
 export class Grades extends Component {
-  state = {
-    offset: {
-      height: 207,
-      width: 462
-    }
-  };
+  state = {};
   componentWillMount = () => {
     window.addEventListener("resize", setPopupStyle.bind(this));
   };
   render() {
-    const {
-      display: grades,
-      percentage,
-      windowInnerWidth,
-      windowInnerHeight
-    } = this.props;
-    const { offset, popupStyle } = this.state;
+    const { display: grades, percentage } = this.props;
+    const { popupStyle } = this.state;
     return (
-      <div
-        id="grades"
-        style={{
-          width: windowInnerWidth - offset.width,
-          height: windowInnerHeight - offset.height
-        }}
-      >
+      <div id="grades">
         <h1>Resultaten</h1>
         <div id="table-wrapper">
           <table>
@@ -64,14 +48,12 @@ export class Grades extends Component {
 function setPopupStyle() {
   if (!this._isMounted) return;
   const boundingRect = ReactDOM.findDOMNode(this).getBoundingClientRect();
-  const { windowInnerWidth, windowInnerHeight } = this.props;
-  const { offset } = this.state;
   this.setState({
     popupStyle: {
       left: boundingRect.left,
       top: boundingRect.top,
-      width: windowInnerWidth - offset.width,
-      height: windowInnerHeight - offset.height
+      width: boundingRect.width - 6,
+      height: boundingRect.height
     }
   });
 }
