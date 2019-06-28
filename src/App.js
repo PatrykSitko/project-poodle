@@ -17,8 +17,7 @@ export const App = ({ token }) => (
     ) : (
       <Switch>
         <Route path="/student/:userName" exact component={Student} />
-        <Route path="/instructor/groups" exact component={Groups} />
-        <Route path="/instructor/groups/:group" exact component={null} />
+        <Route path="/instructor/group" exact component={Groups} />
       </Switch>
     )}
   </Router>
