@@ -1,0 +1,79 @@
+.close-display-button p {
+  padding-top: 7px;
+  padding-bottom: -10px;
+  border-radius: 10px;
+}
+.close-display-button {
+  margin-top: 2px;
+  color: red;
+  height: 30px;
+  border: 3px solid red;
+  border-radius: 10px;
+  background-color: white;
+  transition: background-color 0.25s ease-in, color 0.25s ease-in;
+}
+.close-display-button:hover {
+  background-color: red;
+  color: white;
+}
+
+.display-content {
+  border-radius: 8px;
+  height: calc(100% - 36px);
+  background-color: lightgray;
+  border: 3px solid rgb(99, 98, 98);
+}
+
+.display-container {
+  margin: auto;
+  width: 60%;
+  height: calc(100% - 8px);
+  border-radius: 10px;
+}
+.display-title {
+  font-size: 39px;
+  text-align: center;
+  text-indent: 86px;
+  display: inline-block;
+  width: 100%;
+  font-weight: bolder;
+  color: lightgray;
+  background-color: black;
+  height: 100%;
+  border-right: 3px solid rgb(99, 98, 98);
+  overflow: hidden;
+}
+.display-bar {
+  height: 46px;
+  margin-bottom: -8px;
+  overflow: hidden;
+}
+.new-exam-button {
+  cursor: pointer;
+  float: right;
+  width: 100%;
+  border-top-right-radius: 5px;
+  border: 3px solid lightgray;
+  background-color: lightgray;
+  color: black;
+  font-size: 35px;
+  transition: border 0.25s ease-in, background-color 0.25s ease-in,
+    color 0.25s ease-in;
+  box-shadow: -1px 0px 0px 1px gray;
+  overflow: hidden;
+}
+
+.new-exam-button:hover {
+  background-color: gray;
+  color: white;
+}
+
+.exams-list {
+  margin-left: -3px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  width: 100%;
+  height: calc(100% - 45px);
+  background-color: lightgray;
+  border: 3px solid rgb(99, 98, 98);
+}
