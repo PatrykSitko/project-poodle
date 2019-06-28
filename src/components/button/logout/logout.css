@@ -1,5 +1,5 @@
 .logout-button {
-  float:right;
+  float: right;
   background-color: red;
   width: 49px;
   height: 49px;
@@ -9,7 +9,7 @@
   margin-top: 7px;
   margin-right: 7px;
 }
-.absolute{
+.absolute {
   display: block;
   top: 0px;
   right: 0px;
