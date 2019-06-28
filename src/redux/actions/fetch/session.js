@@ -10,10 +10,7 @@ export function updateSession(token) {
   return { type: token ? SESSION_ESTABLISHED : LOGGED_OUT, payload: { token } };
 }
 
-export default ({ credentials, setSubmitting }) => async (
-  dispatch,
-  getState
-) => {
+export default ({ credentials, setSubmitting }) => async dispatch => {
   setSubmitting(true);
   dispatch({ type: ESTABLISHING_SESSION });
   const response = await fetch("/login", {
