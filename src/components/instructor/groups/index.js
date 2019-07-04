@@ -1,7 +1,7 @@
 import React from "react";
 import ImageButton from "../../button/image";
 import Group from "../../group";
-import display from "./display";
+import exams from "./exams";
 import Member from "../../group/member";
 import javaLogo from "../../../images/java-logo.png";
 import javaIotLogo from "../../../images/java-iot-logo.png";
@@ -37,7 +37,7 @@ export function Groups({ filter, groups, pathname, windowInnerWidth }) {
       }
       return (
         <Member key={index}>
-          <ImageButton image={image} Display={display(`${pathname}/${id}`)}>
+          <ImageButton image={image} Display={exams(`${pathname}/${id}`)}>
             {groupName}
           </ImageButton>
         </Member>
