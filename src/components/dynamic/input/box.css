@@ -1,0 +1,12 @@
+.dynamic-input-box {
+  width: 100%;
+  border: none;
+  border-right: 3px solid black;
+  border-bottom: 3px solid black;
+  text-align: center;
+  overflow: hidden;
+}
+.dynamic-input-box .dynamic-input {
+  width: 99%;
+  background-color: inherit;
+}
