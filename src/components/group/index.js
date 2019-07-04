@@ -89,7 +89,7 @@ export function Group({
     }
     rows = rows.map((row, index) => {
       return (
-        <span className="group-row" key={index}>
+        <span className="group-row" key={"group-row" + index}>
           {row.map((member, index, members) => {
             const props = { ...member.props };
             if (!props.style) {
@@ -122,7 +122,7 @@ export function Group({
               <Member
                 {...props}
                 style={{ ...props.style, ...memberGlobalStyle }}
-                key={member.key}
+                key={member.key + `${index * 100}`}
                 className={memberClassName}
               />
             );
