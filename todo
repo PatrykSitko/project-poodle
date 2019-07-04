@@ -1,0 +1,6 @@
+from 04/07: Structurize the code to create robust components.
+            Fix group Component bug:
+                                    The group Component will unmount buttons that are moved from one row to another.
+                                    I have to move the group to member mapping logic into a wrapper component,
+                                    and make the group component only handle moving members from one row to another.
+                                    That solution should fix the unmounting problem of group members.
