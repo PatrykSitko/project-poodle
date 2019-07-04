@@ -3,7 +3,6 @@
   width: 100%;
   border: none;
   border-right: 3px solid black;
-  border-bottom: 3px solid black;
   text-align: center;
   overflow: hidden;
 }
@@ -14,6 +13,18 @@
 .instructor-exam:hover {
   background-color: red;
 }
+.instructor-exam-students-button {
+  background-color: lightgray;
+  margin-top: 1.5%;
+  margin-bottom: 1.5%;
+  border-radius: 50px;
+  border: 3px solid black;
+  transition: color 0.35s ease-in, background-color 0.35s ease-in;
+}
+.instructor-exam-students-button:hover {
+  background-color: gray;
+  color: white;
+}
 .instructor-exam-input {
   margin: 0 auto;
   width: 90%;
@@ -22,6 +33,23 @@
 .instructor-exam-date-input {
   padding-left: 1.5px;
 }
+
+.instructor-exam-title,
+.instructor-exam-date,
+.instructor-exam-max-grade,
+.instructor-exam-weight {
+  border-bottom: none;
+  border-top: 3px solid black;
+}
+.instructor-exam-title {
+  border-right: none;
+}
+.instructor-exam-title .dynamic-input {
+  min-width: 85%;
+  max-width: 99%;
+  width: auto;
+}
+.instructor-exam-students-button .instructor-exam-title,
 .instructor-exam-weight {
   border-right: none;
 }
