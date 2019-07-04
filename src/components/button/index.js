@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { push } from "redux-first-routing";
+import P from "../dynamic/p";
 import { connect } from "react-redux";
 import ReactDOM from "react-dom";
 import "./button.css";
@@ -16,13 +17,13 @@ export const Button = ({
   className,
   childrenClassName,
   style,
-  textStyle,
-  lineHeight = "50%",
+  dynamic,
   Display,
   onClick,
   ...other
 }) => {
   const button = useRef();
+  const displayerRef = useRef();
   const [height, setHeight] = useState(1);
   const [showDisplay, setShowDisplay] = useState(false);
   const [displayHidden, setDisplayHidden] = useState(true);
@@ -37,18 +38,6 @@ export const Button = ({
       }
     }
   }, [button, height]);
-  let fontStyle = {};
-  if (textStyle) {
-    if (textStyle.center) {
-      fontStyle.float = "none";
-      fontStyle.marginLeft = "auto";
-      fontStyle.marginRight = "auto";
-    }
-    if (textStyle.fontSize && textStyle.fontSize === "auto") {
-      fontStyle.fontSize = height / 2;
-      fontStyle.padding = `calc(25% - ${fontStyle.fontSize}px) 0px`;
-    }
-  }
   childrenClassName =
     typeof children === "string"
       ? `button-children-string ${childrenClassName ? childrenClassName : ""}`
@@ -80,19 +69,23 @@ export const Button = ({
     );
   }
   return [
+    Display && !displayHidden && (
+      <div
+        key="displayer"
+        ref={displayerRef}
+        style={{ opacity: displayerOpacity }}
+        className="displayer"
+        onClick={e => {
+          if (e.target === displayerRef.current) {
+            setShowDisplay(false);
+          }
+        }}
+      >
+        <Displayer />
+      </div>
+    ),
     <div
-      style={{ opacity: displayerOpacity }}
-      className="displayer"
-      hidden={!Displayer || displayHidden}
-      onClick={e => {
-        if (e.target.className === "displayer") {
-          setShowDisplay(false);
-        }
-      }}
-    >
-      <Displayer />
-    </div>,
-    <div
+      key="button"
       {...other}
       ref={button}
       onMouseUp={() => {
@@ -104,9 +97,11 @@ export const Button = ({
       className={`button ${className ? " " + className : ""}`}
       style={{ ...style }}
     >
-      <p className={childrenClassName} style={{ ...textStyle, ...fontStyle }}>
-        {children}
-      </p>
+      {dynamic ? (
+        <P className={childrenClassName}>{children}</P>
+      ) : (
+        <p className={childrenClassName}>{children}</p>
+      )}
     </div>
   ];
 };
