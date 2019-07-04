@@ -1,0 +1,38 @@
+.students-container {
+}
+.students {
+  background-color: #ffffff00;
+}
+.close-students-button,
+.close-students-button:hover {
+  background-color: #00000000;
+  border: 3px solid #00000000;
+  color: #00000000;
+}
+
+.students-list {
+  margin-left: -3px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: 100%;
+  height: calc(100% - 45px);
+  background-color: #d3d3d350;
+  border: 3px solid #00000000;
+}
+.students-filter {
+  margin-top: 42px;
+}
+
+.students-list::-webkit-scrollbar {
+  width: 0px;
+}
+
+.students-student-name {
+  background-color: white;
+  border-radius: 50px;
+  width: 90%;
+  margin: 1.5% auto;
+  text-align: center;
+}
